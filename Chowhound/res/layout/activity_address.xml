@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F0F0"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/x10" >
+
+        <Button
+            android:id="@+id/btn_activity_address_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/transparent"
+            android:drawableLeft="@drawable/top_bar2_arrow_back"
+            android:gravity="center_vertical"
+            android:text="切换地址"
+            android:textColor="@color/font_color_gray"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn_activity_address_add_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/x10"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/transparent"
+            android:text="添加地址"
+            android:textColor="@color/font_color_gray"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/btn_activity_address_back"
+            android:layout_marginTop="@dimen/x10"
+            android:background="@color/divider" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_activity_address_nearby"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:cacheColorHint="@color/transparent"
+        android:divider="@color/transparent"
+        android:listSelector="@color/transparent">
+    </ListView>
+
+</LinearLayout>

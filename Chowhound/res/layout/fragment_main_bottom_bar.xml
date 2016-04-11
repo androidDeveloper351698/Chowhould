@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_main_tab_bottom"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="@drawable/abc_ab_bottom_solid_light_holo" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_main_tab_bottom_portal_index"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:descendantFocusability="beforeDescendants"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageButton
+                android:id="@+id/ib_main_tab_bottom_portal_index"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#0000"
+                android:clickable="false"
+                android:src="@drawable/ddt_ic_img_radio_portal_index_check" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-10dp"
+                android:text="外卖" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_main_tab_bottom_portal_order"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:descendantFocusability="beforeDescendants"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageButton
+                android:id="@+id/ib_main_tab_bottom_portal_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#0000"
+                android:clickable="false"
+                android:src="@drawable/ddt_ic_img_radio_portal_order" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-10dp"
+                android:text="订单" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/ll_main_tab_bottom_profile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:descendantFocusability="beforeDescendants"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageButton
+                android:id="@+id/ib_main_tab_bottom_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#0000"
+                android:clickable="false"
+                android:src="@drawable/ddt_ic_img_radio_main_tab_profile" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-10dp"
+                android:text="我的" />
+        </LinearLayout>
+ 
+    </LinearLayout>
+
+</RelativeLayout>

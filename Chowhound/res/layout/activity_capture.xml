@@ -1,0 +1,139 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_capture"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000" >
+
+    <RelativeLayout
+        android:id="@+id/activity_capture_capture_containter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" >
+
+        <SurfaceView
+            android:id="@+id/activity_capture_capture_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/activity_capture_top_mask"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/activity_capture_scan_mask"
+            android:contentDescription="@string/app_name" />
+
+        <RelativeLayout
+            android:id="@+id/activity_capture_capture_crop_layout"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_below="@id/activity_capture_top_mask"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/activity_capture_scan_frame"
+            android:contentDescription="@string/app_name" >
+
+            <ImageView
+                android:id="@+id/activity_capture_capture_scan_line"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_margin="5dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/activity_capture_scan_ray" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/activity_capture_bottom_mask"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/activity_capture_capture_crop_layout"
+            android:background="@drawable/activity_capture_scan_mask"
+            android:contentDescription="@string/app_name" />
+
+        <ImageView
+            android:id="@+id/activity_capture_left_mask"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/activity_capture_bottom_mask"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/activity_capture_top_mask"
+            android:layout_toLeftOf="@id/activity_capture_capture_crop_layout"
+            android:background="@drawable/activity_capture_scan_mask"
+            android:contentDescription="@string/app_name" />
+
+        <ImageView
+            android:id="@+id/activity_capture_right_mask"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/activity_capture_bottom_mask"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/activity_capture_top_mask"
+            android:layout_toRightOf="@id/activity_capture_capture_crop_layout"
+            android:background="@drawable/activity_capture_scan_mask"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_capture_capture_crop_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="将二维码图片对准扫描框即可自动扫描"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_activity_capture_anim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/rl_activity_capture_up"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/iv_activity_capture_center_img"
+            android:layout_marginTop="-30dp"
+            android:background="#1B1D1F" >
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="83dp"
+                android:layout_height="39dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/activity_capture_down_img" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_activity_capture_down"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_above="@+id/iv_activity_capture_center_img"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="-30dp"
+            android:background="#1B1D1F" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="83dp"
+                android:layout_height="39dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/activity_capture_up_img" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_activity_capture_center_img"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/activity_capture_center_img" />
+    </RelativeLayout>
+
+</FrameLayout>

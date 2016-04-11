@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/x5" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_table_bg"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/rl_fragment_check_phone_register_region"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y30"
+            android:layout_margin="@dimen/x10"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:layout_width="@dimen/x85"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="国家地区"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@color/transparent"
+                android:drawableRight="@drawable/frag_mine_arrow"
+                android:text="中国大陆+86"
+                android:textColor="@color/font_color_gray2" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y30"
+            android:layout_margin="@dimen/x10"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="@dimen/x85"
+                android:layout_height="wrap_content"
+                android:text="手机号"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/et_fragment_check_phone_register_phone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@color/transparent"
+                android:ems="11"
+                android:inputType="phone" >
+
+                <requestFocus />
+            </EditText>
+
+            <ImageView
+                android:id="@+id/iv_fragment_check_phone_clean"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="-5dp"
+                android:src="@drawable/mini_icon_clean"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_fragment_check_phone_register_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/x10"
+        android:background="@drawable/login_enter"
+        android:padding="@dimen/x10"
+        android:text="下一步"
+        android:textColor="#80ffffff" />
+
+</LinearLayout>

@@ -1,0 +1,477 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.chowhound.MainActivity$PlaceholderFragment" >
+
+    <include layout="@layout/top_bar" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#44aaaaaa"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/y10"
+                android:paddingTop="@dimen/y10" >
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="@dimen/x50"
+                    android:layout_height="@dimen/x50"
+                    android:layout_marginLeft="@dimen/x10"
+                    android:layout_marginRight="@dimen/x10"
+                    android:src="@drawable/app_loading0" />
+
+                <TextView
+                    android:id="@+id/tv_fragment_mine_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:text="吃货用户名" 
+                    android:textSize="20sp"/>
+
+                <Button
+                    android:id="@+id/btn_fragment_mine_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/y5"
+                    android:paddingBottom="@dimen/y5"
+                    android:paddingLeft="@dimen/x12"
+                    android:paddingRight="@dimen/x12"
+                    android:text="点击登陆"
+                    android:textColor="@color/app_color2"
+                    android:background="@drawable/btn_text_bg" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#55aaaaaa" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y12"
+                android:background="#ffffff"
+                android:orientation="vertical" >
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#55aaaaaa" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/x20" >
+
+                    <ImageView
+                        android:id="@+id/iv_fragment_index_scan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/frag_mine_address" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x20"
+                        android:text="配送地址管理" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#00000000" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/frag_mine_arrow" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="@dimen/x45"
+                    android:background="#55aaaaaa" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/x20" >
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/frag_mine_correct" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x20"
+                        android:text="我的收藏" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#00000000" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/frag_mine_arrow" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#55aaaaaa" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y12"
+                android:background="#ffffff"
+                android:orientation="vertical" >
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#55aaaaaa" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/x20" >
+
+                    <ImageView
+                        android:id="@+id/iv_fragment_index_scan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/frag_mine_red_packet" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x20"
+                        android:text="红包" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/x10"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="兑换红包" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/frag_mine_arrow" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="@dimen/x45"
+                    android:background="#55aaaaaa" />
+
+                <LinearLayout
+                    android:id="@+id/ll_frag_mine_more_coupons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/x20" >
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/frag_mine_coupons" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x20"
+                        android:text="更多卡券" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#00000000" />
+
+                    <ImageView
+                        android:id="@+id/iv_frag_mine_coupons_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/frag_mine_arrow_down" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#55aaaaaa" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_frag_mine_coupons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffeeeeee"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#55aaaaaa" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/x20" >
+
+                    <ImageView
+                        android:id="@+id/iv_fragment_index_scan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/frag_mine_food_card" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x20"
+                        android:text="饭卡" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#00000000" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/frag_mine_arrow" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="@dimen/x45"
+                    android:background="#55aaaaaa" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/x20" >
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/frag_mine_exchange_voucher" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x20"
+                        android:text="兑换券" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#00000000" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/frag_mine_arrow" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#55aaaaaa" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y12"
+                android:background="#ffffff"
+                android:orientation="vertical" >
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#55aaaaaa" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/x20" >
+
+                    <ImageView
+                        android:id="@+id/iv_fragment_index_scan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/frag_mine_customer_service" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x20"
+                        android:text="口碑外卖客服中心" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/x10"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="4.0.0" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/frag_mine_arrow" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="@dimen/x45"
+                    android:background="#55aaaaaa" />
+
+                <LinearLayout
+                    android:id="@+id/ll_frag_mine_more_coupons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/x20" >
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/frag_mine_business" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x20"
+                        android:text="我是商家我要入驻" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#00000000" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/frag_mine_arrow" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#55aaaaaa" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y12"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/x20" >
+
+                <ImageView
+                    android:id="@+id/iv_fragment_index_scan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/frag_mine_feedback" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x20"
+                    android:text="意见反馈" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00000000" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/frag_mine_arrow" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#55aaaaaa" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

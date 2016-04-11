@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y35"
+        android:textColor="@color/font_color_gray"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:text="请输入手机收到的短信验证码" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y50"
+        android:padding="@dimen/x10" >
+
+        <EditText
+            android:id="@+id/et_fragment_security_code_code"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:ems="10"
+            android:background="@drawable/login_table_bg"
+            android:inputType="number" 
+            android:hint="短信验证码">
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/btn_fragment_security_code_resend_verify_code"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="@dimen/x3"
+            android:layout_marginLeft="@dimen/x10"
+            android:background="@drawable/btn_text_bg"
+            android:textColor="@color/app_color2"
+            android:textSize="12sp"
+            android:text="重发验证码" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_fragment_security_code_next"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y35"
+        android:layout_marginLeft="@dimen/x10"
+        android:layout_marginRight="@dimen/x10"
+        android:background="@color/app_color2"
+        android:textColor="#80ffffff"
+        android:text="下一步" />
+
+</LinearLayout>

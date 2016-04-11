@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y40" 
+        android:gravity="center_vertical"
+        android:padding="@dimen/x10"
+        android:background="#80FCFF67">
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ddt_takeout_tag_icon" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ddt_takeout_store_notice_icon" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="口碑外卖新店开张！欢迎各位同学选购...口碑外卖有打折...."
+            android:singleLine="true"
+            android:maxEms="15" 
+            android:ellipsize="end"
+            android:textColor="@color/app_color"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="false" >
+
+        <ListView
+            android:id="@+id/fragment_menu_classify"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/x10"
+            android:layout_weight="1"
+            android:cacheColorHint="@color/transparent"
+            android:fastScrollEnabled="false"
+            android:listSelector="@color/transparent"
+            android:scrollbars="none" >
+        </ListView>
+
+        <FrameLayout
+            android:id="@+id/fragment_menu_container"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3" >
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,25 @@
+1459073934219	Change Layout
+1459077517379	Extract method 'initDialog'
+1459079573610	Rename method 'dissmisDialog'
+1459085477060	Rename local variable 'jsonObject'
+1459085593481	Rename local variable 'orders'
+1459086025747	Rename field 'shopName'
+1459088033005	Extract method 'getOrderId'
+1459088096736	Extract method 'getOrderDetail'
+1459165761435	Change Layout
+1459167593109	Delete element
+1459168997177	Move files
+1459169258345	Delete element
+1459181577664	Rename field 'login'
+1459225640559	Convert local variable 'usernames' to field
+1459254686471	Rename field 'aliuser_app_titlebar_bg'
+1459260826452	Move file
+1459271651115	Delete element
+1459271794483	Delete element
+1459314836093	Rename field 'action_item_btn'
+1459314884657	Rename field 'tv_title'
+1459314923665	Rename resource 'action_item_horizontal.xml'
+1459314980913	Rename field 'action_base2'
+1459315008267	Rename resource 'quickaction_vertical.xml'
+1459315625263	Delete element
+1459320584710	Delete elements

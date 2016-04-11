@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#80FCFF67"
+        android:gravity="center_vertical"
+        android:padding="@dimen/x10" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="@dimen/x20"
+            android:layout_height="@dimen/x20"
+            android:layout_marginRight="@dimen/x5"
+            android:src="@drawable/ddt_takeout_tag_icon" />
+
+        <ImageView
+            android:id="@+id/iv_fragment_index_scan"
+            android:layout_width="@dimen/x20"
+            android:layout_height="@dimen/x20"
+            android:src="@drawable/ddt_takeout_store_notice_icon" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="口碑外卖新店开张！欢迎各位同学选购...口碑外卖有打折...."
+            android:textColor="@color/app_color" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:baselineAligned="false" >
+
+        <ListView
+            android:id="@+id/fragment_menu_classify"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/x10"
+            android:layout_weight="1"
+            android:cacheColorHint="@color/transparent"
+            android:fastScrollEnabled="false"
+            android:listSelector="@color/transparent"
+            android:scrollbars="none" >
+        </ListView>
+
+        <za.co.immedia.pinnedheaderlistview.PinnedHeaderListView
+            android:id="@+id/fragment_menu_goods"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:cacheColorHint="@color/transparent"
+            android:divider="@color/transparent"
+            android:fastScrollEnabled="false"
+            android:listSelector="@color/transparent"
+            android:scrollbars="none" >
+        </za.co.immedia.pinnedheaderlistview.PinnedHeaderListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x60" 
+        android:gravity="center_vertical"
+        android:padding="@dimen/x10"
+        android:background="#80000000">
+
+        <RelativeLayout
+            android:layout_width="@dimen/x30"
+            android:layout_height="match_parent" 
+            android:layout_marginRight="@dimen/x10">
+
+            <TextView
+                android:id="@+id/tv_fragment_menu_buy_num"
+                android:layout_width="@dimen/x12"
+                android:layout_height="@dimen/x12"
+                android:gravity="center"
+                android:layout_marginTop="-3dp"
+                android:layout_marginRight="-3dp"
+                android:layout_alignTop="@+id/iv_fragment_menu_shop_car"
+                android:layout_alignRight="@+id/iv_fragment_menu_shop_car"
+                android:textColor="@color/white"
+                android:background="@drawable/fragment_menu_buy_num_bg"
+                android:textSize="10sp"
+                android:text="1" />
+
+            <ImageView
+                android:id="@+id/iv_fragment_menu_shop_car"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/fragment_menu_shop_cart" />
+
+        </RelativeLayout>
+        
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#80ffffff"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginRight="@dimen/x10"
+            android:orientation="vertical"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:id="@+id/tv_fragment_menu_dilivery_fee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#80ffffff"
+                android:text="免配送费" />
+
+            <TextView
+                android:id="@+id/tv_fragment_menu_sum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:text="0元" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_fragment_menu_submit"
+            android:layout_width="@dimen/x100"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/x10"
+            android:background="@color/app_color2"
+            android:textColor="@color/white"
+            android:text="选好了" />
+
+    </LinearLayout>
+</LinearLayout>

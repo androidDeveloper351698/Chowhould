@@ -1,0 +1,130 @@
+package com.cwenhui.chowhound.widget;
+
+import java.util.List;
+
+import android.content.Context;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.cwenhui.chowhound.adapter.CommonAdapter;
+import com.cwenhui.chowhound.bean.GoodsBean;
+import com.cwenhui.chowhound.utils.ViewHolder;
+import com.cwenhui.chowhound.widget.CustomQuickAction.Direction;
+import com.example.chowhound.R;
+
+public class ShopCartQuickAction2 extends CustomQuickAction<GoodsBean> {
+	private static final String TAG = "ShopCartQuickAction2";
+	private onClickShopCartListener shopCartListener;
+	private ListView itemList;
+	private CommonAdapter<GoodsBean> adapter;
+
+	public ShopCartQuickAction2(Context context) {
+		super(context);
+		adapter = new CommonAdapter<GoodsBean>(context, mItems, R.layout.item_shop_cart_quick_action) {
+			
+			@Override
+			public void convert(ViewHolder holder, GoodsBean t) {
+				holder.setText(R.id.tv_item_shop_cart_quickaction_name, t.getGoodsName())
+					.setText(R.id.tv_item_shop_cart_quickaction_price, t.getPrice()+"元")
+					.setText(R.id.tv_item_shop_cart_quickaction_num, t.getSelectedNum()+"");
+				setOnShopCartClickListener((Button)holder.getView(R.id.btn_item_shop_cart_quickaction_add), 
+						(TextView)holder.getView(R.id.tv_item_shop_cart_quickaction_num));
+				setOnShopCartClickListener((Button)holder.getView(R.id.btn_item_shop_cart_quickaction_add), 
+						(TextView)holder.getView(R.id.btn_item_shop_cart_quickaction_del));
+			}
+		};
+		itemList.setAdapter(adapter);
+	}
+	
+	private void setOnShopCartClickListener(Button btn, final TextView selectedNum) {
+		btn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(shopCartListener != null){
+					if(v.getId() == R.id.btn_item_shop_cart_quickaction_add){
+						shopCartListener.onClickAdd(selectedNum);
+					}else{
+						shopCartListener.onClickDel(v, selectedNum);
+					}
+				}
+			}
+		});
+	}
+	
+	public void setOnClickShopCartListener(onClickShopCartListener shopCartListener) {
+		this.shopCartListener = shopCartListener;
+	}
+
+	@Override
+	public void addQuickActionItem(GoodsBean item) {
+//		mItems.add(item);
+	}
+	
+	public void addQuickActionItems(List<GoodsBean> items){
+		mItems.clear();
+		mItems.addAll(items);
+		adapter.notifyDataSetChanged();
+	}
+
+	@Override
+	public void initQuickAction(Context context) {
+		mRootView = (ViewGroup) mInflater.inflate(R.layout.layout_shop_cart_quickaction2, null);
+		itemList =  (ListView) mRootView.findViewById(R.id.shop_cart_layout_quickaction2);
+		itemList.setDividerHeight(0);
+		itemList.setDivider(null);
+		mRootView.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+		setContentView(mRootView);
+	}
+	
+	@Override
+	public void show(View anchor) {
+		if (!isShowing()) {
+			Direction showDirection = computeDisplayPosition(anchor);			// 位置
+			int[] locations = preShow(anchor, showDirection);					// 根据位置，显示箭头
+			Log.e(TAG, getItemHeight()+"");
+			if(mItems.size()<4){
+				locations[1] -= getItemHeight()*(mItems.size()-1);
+			}else{
+				locations[1] -= getItemHeight()*3;
+				LayoutParams layoutParams = itemList.getLayoutParams();  
+//			    layoutParams.width = LayoutParams.MATCH_PARENT;  
+			    layoutParams.height = getItemHeight()*5;  
+			    itemList.setLayoutParams(layoutParams);  
+			}
+			if (locations != null) {											// 显示PopupWindow
+				showAtLocation(anchor, Gravity.NO_GRAVITY, locations[0], locations[1]);
+			}
+			Log.e(TAG, "locations[0]"+locations[0]+"locations[1]"+locations[1]);
+		} else {
+			dismiss();
+		}
+	}
+	
+	/**
+	 * 获取item的高度
+	 * @return
+	 */
+	private int getItemHeight(){
+		ListAdapter adapter = itemList.getAdapter();  
+	    if (adapter == null) { 
+	        return 0; 
+	    } 
+	    View item = adapter.getView(0, null, itemList); 
+	    item.measure(0, 0); 
+	    return item.getMeasuredHeight();
+	}
+
+	public interface onClickShopCartListener{
+		public void onClickDel(View view, TextView num);
+		public void onClickAdd(TextView num);
+	}
+}

@@ -1,0 +1,72 @@
+1457846241062	Extract method 'checkNetwork'
+1457849868730	Change Layout
+1457849912291	Change Layout
+1457857085301	Delete element
+1457857203521	Delete element
+1457859216565	Move type 'GetDataTask' to new file
+1457859282155	Move compilation unit
+1457874381282	Delete element
+1457874432051	Copy file
+1457875706187	Rename resource 'activity_shop_classify_item_bg.png'
+1457882466782	Change Layout
+1457887588704	Change Layout
+1457929881713	Copy compilation unit
+1457930409785	Delete element
+1457931354418	Convert local variable 'fragmentTransaction' to field
+1457931498863	Extract method 'transContent'
+1457950559085	Rename field 'activity_shop'
+1457951110604	Copy file
+1457951406783	Rename field 'activity_shop_classify'
+1457951441683	Rename field 'activity_shop_fragment_container'
+1457951733311	Rename type 'ShopFragment'
+1457951756557	Rename field 'fragment_shop'
+1457951789592	Rename field 'item_activity_shop_classify_name'
+1457951809664	Rename field 'fragment_shop_classify'
+1457951818005	Rename field 'fragment_shop_container'
+1457951876181	Rename field 'iv_activity_shop_classify_name_bg'
+1457951925357	Rename field 'activity_shop_item_classify_name_bg'
+1457951949594	Rename field 'tv_item_activity_shop_classify_name'
+1457951975207	Rename type 'ShopAdapter'
+1457951990964	Rename field 'shopAdapter'
+1457952816632	Infer generic type arguments
+1457958122985	Copy file
+1457972600219	Rename resource 'iconfont-saoma.png'
+1457972611974	Rename resource 'iv_activity_main_top_bar_address.png'
+1458017037720	Rename field 'activity_main_top_bar'
+1458017048892	Rename field 'activity_main_top_bar'
+1458031543535	Copy file
+1458042828337	Change Layout
+1458042849208	Change Layout
+1458043920909	Copy file
+1458044175231	Change Layout
+1458051623401	Delete element
+1458051640272	Rename resource 'item_frag_menu_goods_add1.png'
+1458052151713	Delete element
+1458101718601	Delete element
+1458101728586	Delete element
+1458104636203	Remove Container
+1458129141311	Delete element
+1458129304200	Copy compilation unit
+1458135504278	Move file
+1458135548233	Copy file
+1458206682143	Copy compilation unit
+1458206696512	Rename type 'ShopDetail'
+1458206916502	Copy file
+1458209951187	Rename resource 'item_frag_order.png'
+1458301948049	Rename field 'activity_main_top_bar_scan'
+1458301974290	Rename field 'imageView2'
+1458303222641	Rename field 'asd2'
+1458303243918	Rename field 'kakalib_start_anim_icon'
+1458303270966	Rename field 'asd1'
+1458303296915	Move files
+1458303367659	Rename resource 'capture.9.png'
+1458303371286	Move file
+1458303406178	Rename resource 'kakalib_scan_ray.png'
+1458303409067	Move file
+1458303455959	Rename resource 'scan_line.png'
+1458303459090	Move file
+1458303466434	Rename resource 'scan_mask.png'
+1458303468835	Move file
+1458303748398	Rename package 'lib'
+1458303775919	Rename package 'lib.camera'
+1458303790622	Rename package 'lib.decode'

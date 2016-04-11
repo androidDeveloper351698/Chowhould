@@ -1,0 +1,48 @@
+1458455275449	Rename resource 'activity_address.xml'
+1458455665615	Change Layout
+1458470067518	Delete elements
+1458471608211	Rename type 'MobileLocation'
+1458476329915	Delete element
+1458479198051	Change Layout
+1458479715025	Delete element
+1458479804654	Delete element
+1458480737043	Change Layout
+1458481416018	Rename field 'main_top_RL'
+1458481435952	Rename field 'activity_mobile_location_bmapView'
+1458481493509	Rename field 'main_search_address'
+1458481526431	Rename field 'main_search_pois'
+1458481579950	Rename field 'poisLL'
+1458481606786	Rename field 'topRL'
+1458551039448	Rename field 'tv_activity_add_address_select_address'
+1458553783028	Rename field 'et_activity_add_address_consignee'
+1458553798427	Rename field 'consignee'
+1458553819539	Rename local variable 'receiver'
+1458553909956	Rename field 'selectAddress'
+1458553920534	Rename field 'phone'
+1458553933406	Rename field 'detailAddress'
+1458554311471	Convert local variable 'bundle' to field
+1458560780563	Convert local variable 'p' to field
+1458564040555	Delete element
+1458564069830	Delete element
+1458564103578	Copy file
+1458566272039	Convert local variable 'receiver' to field
+1458566278942	Convert local variable 'phone' to field
+1458566284649	Convert local variable 'selectAddress' to field
+1458566290870	Convert local variable 'detailAddress' to field
+1458566435769	Extract method 'checkPhone'
+1458568477311	Convert local variable 'data' to field
+1458568493853	Rename field 'data'
+1458568524101	Convert local variable 'dialog' to field
+1458636219323	Rename field 'test'
+1458649242055	Convert local variable 'deliveryAddresses' to field
+1458649483674	Rename field 'address'
+1458652408540	Extract method 'refleshAddressList'
+1458661143246	Copy file
+1458661401960	Rename type 'addressListListener'
+1458661790502	Convert local variable 'dialog' to field
+1458731108916	Convert local variable 'bundle' to field
+1458735117635	Extract method 'editAddress'
+1458800323605	Rename local variable 'headerHiew'
+1458800664988	Extract method 'getPois'
+1458911429039	Extract method 'initDisplayImageOptions'
+1458914054012	Move compilation unit

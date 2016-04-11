@@ -1,0 +1,14 @@
+package com.cwenhui.chowhound.widget;
+
+import android.content.Context;
+
+import com.cwenhui.chowhound.bean.LoginActionItem;
+
+public class LoginQuickAction extends CustomQuickAction<LoginActionItem> {
+
+	public LoginQuickAction(Context context) {
+		super(context);
+		
+	}
+
+}

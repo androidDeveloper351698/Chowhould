@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/x10"
+    android:paddingLeft="@dimen/x10"
+    android:paddingRight="@dimen/x10">
+
+    <LinearLayout
+        android:id="@+id/ll_item_activity_address_neaby_poiname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="@dimen/x10" >
+
+        <TextView
+            android:id="@+id/tv_item_activity_address_neaby_poiname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="广东第二师范学院(花都校区)" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/tv_item_activity_address_neaby_poiaddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="迎宾大道西30号"
+            android:textColor="@color/font_color_gray" />
+
+        <TextView
+            android:id="@+id/tv_item_activity_mobile_location_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:textColor="@color/font_color_gray" />
+
+    </LinearLayout>
+
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider"
+        android:layout_marginTop="@dimen/x10"/>
+</LinearLayout>

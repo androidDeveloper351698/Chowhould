@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll_fragment_main_order_shops_first_item2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"  
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_fragment_main_order_shops_type_classify2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:orientation="horizontal"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:layout_weight="1">
+            
+
+            <TextView
+                android:id="@+id/tv_fragment_main_order_shops_type_classify2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:text="全部分类" >
+            </TextView>
+
+            <Spinner
+                android:id="@+id/spinner_fragment_main_order_shops_type_classify2"
+                android:layout_width="10dp"
+                android:layout_height="6dp"
+                android:background="@drawable/ddt_near_tab_arrow" >
+            </Spinner>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#ffffff" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:layout_marginTop="7dp"
+                android:background="#ffffff"
+                android:src="@drawable/mini_vertical_line" />
+
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/ll_fragment_main_order_shops_discount_classify2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:orientation="horizontal"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:layout_weight="1">
+            
+
+            <TextView
+                android:id="@+id/tv_fragment_main_order_shops_discount_classify2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:text="优惠活动" >
+            </TextView>
+
+            <Spinner
+                android:id="@+id/spinner_fragment_main_order_shops_discount_classify2"
+                android:layout_width="10dp"
+                android:layout_height="6dp"
+                android:background="@drawable/ddt_near_tab_arrow" >
+            </Spinner>
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#ffffff" >
+
+            <ImageView
+                android:id="@+id/iv_fragment_index_scan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:layout_marginTop="7dp"
+                android:background="#ffffff"
+                android:src="@drawable/mini_vertical_line" />
+
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/ll_fragment_main_order_shops_filter_classify2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:orientation="horizontal"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:layout_weight="1">
+            
+
+            <TextView
+                android:id="@+id/tv_fragment_main_order_shops_filter_classify2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:text="更多筛选" >
+            </TextView>
+
+            <Spinner
+                android:id="@+id/spinner_fragment_main_order_shops_filter_classify2"
+                android:layout_width="10dp"
+                android:layout_height="6dp"
+                android:background="@drawable/ddt_near_tab_arrow" >
+            </Spinner>
+        </LinearLayout>
+        
+    </LinearLayout>
+
+</LinearLayout>

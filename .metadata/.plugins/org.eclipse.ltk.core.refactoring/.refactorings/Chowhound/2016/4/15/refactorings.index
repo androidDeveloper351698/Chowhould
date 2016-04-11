@@ -1,0 +1,53 @@
+1459689695949	Convert local variable 'layout' to field
+1459690546993	Convert local variable 'layout' to field
+1459698815952	Extract method 'showGoodsOperation'
+1459760749135	Rename local variable 'aa'
+1459761306707	Rename method 'setAnim'
+1459766590751	Copy file
+1459767382331	Delete element
+1459770244819	Delete element
+1459775857379	Extract method 'getGoods'
+1459776606137	Rename field 'clicked'
+1459785123593	Change Layout
+1459785747180	Convert local variable 'selected' to field
+1459829901681	Move compilation unit
+1459829944997	Rename type 'ActionItem'
+1459829999297	Rename field 'window'
+1459830475029	Copy compilation unit
+1459839841914	Rename resource 'layout_quickaction.xml'
+1459840090351	Rename field 'layout_quickaction'
+1459840162495	Copy file
+1459840904282	Copy file
+1459840941339	Rename resource 'item_quick_action.xml'
+1459850059247	Delete element
+1459850144806	Copy compilation unit
+1459851821482	Convert local variable 'actionId' to field
+1459852583763	Extract method 'setClickListener'
+1459859300965	Extract method 'setOnShopCartClickListener'
+1459860641377	Convert local variable 'container' to field
+1459860652055	Convert local variable 'goodsName' to field
+1459860661136	Convert local variable 'price' to field
+1459860669706	Convert local variable 'selectedNum' to field
+1459860677279	Convert local variable 'add' to field
+1459860687792	Convert local variable 'del' to field
+1459861445117	Convert local variable 'selectedGoods' to field
+1459871509550	Rename method 'getSelectedItem'
+1459937699560	Extract method 'setSum'
+1459948591769	Copy file
+1459960879223	Extract method 'setQuickActionPosition'
+1459999810917	Rename method 'setSum'
+1460015103677	Extract method 'setGoodsOperateListener'
+1460019544846	Rename local variable 'position'
+1460026393433	Rename method 'notifyDataChanged'
+1460027150861	Rename local variable 'btn'
+1460083966496	Move compilation unit
+1460088910655	Copy file
+1460088913005	Copy file
+1460088915211	Copy file
+1460088915850	Copy file
+1460120294342	Rename field 'orderedGoods'
+1460189683713	Rename field 'seconde'
+1460189835359	Extract method 'setTimerTextView'
+1460208165787	Rename field 'orderStatus'
+1460208196988	Rename method 'getOrderStatus'
+1460208203356	Rename method 'setOrderStatus'

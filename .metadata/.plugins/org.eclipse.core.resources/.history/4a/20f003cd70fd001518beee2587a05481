@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y40"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/x10" >
+
+        <Button
+            android:id="@+id/btn_activity_order_taking_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:drawableLeft="@drawable/top_bar2_arrow_back"
+            android:text="港式车仔面馆"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_activity_order_taking_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/activity_order_taking_phone" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider" />
+
+    <!--
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+        xmlns:ptr="http://schemas.android.com/apk/res/com.example.chowhound"
+        android:id="@+id/pullToRefreshScrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" 
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrMode="both" >
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+    -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x20"
+            android:layout_marginBottom="@dimen/x10"
+            android:layout_gravity="center_horizontal"
+            android:textSize="18sp"
+            android:text="待商家接单" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="10分钟内未接单,将自动取消" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"  >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x160"
+                android:layout_centerInParent="true"
+                android:src="@drawable/activity_order_taking" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/app_color2"
+                android:text="10:00" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

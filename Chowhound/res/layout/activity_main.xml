@@ -1,0 +1,31 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.cwenhui.chowhound.ui.MainActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <ImageView
+        android:id="@+id/iv_activity_main_network_error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ddt_network_error_icon"
+        android:visibility="gone" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/activity_main_vp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/activity_main_bottom_bar">
+    </android.support.v4.view.ViewPager>
+
+    <include
+        android:id="@+id/activity_main_bottom_bar"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/activity_main_vp"
+        layout="@layout/fragment_main_bottom_bar" />
+
+</RelativeLayout>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/y15"
+        android:paddingTop="@dimen/y15" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_fragment_comment_comprehensive_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.6"
+                android:textColor="@color/app_color2"
+                android:textSize="42sp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="综合评分"
+                android:textColor="@color/font_color_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_fragment_comment_goods_quality"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.3"
+                android:textColor="@color/app_color2"
+                android:textSize="42sp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="商品质量"
+                android:textColor="@color/font_color_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_fragment_comment_distribution_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.7"
+                android:textColor="@color/app_color2"
+                android:textSize="42sp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="配送服务"
+                android:textColor="@color/font_color_gray" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/y20"
+        android:background="@color/divider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/x10" >
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="全部评价(" />
+
+        <TextView
+            android:id="@+id/tv_fragment_comment_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="140" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=")" />
+
+        <CheckBox
+            android:id="@+id/cb_fragment_comment_only_see_text_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/fragment_comment_check"
+            android:text=" 只看有文字的评价"
+            android:textColor="@color/font_color_gray" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider" />
+
+</LinearLayout>

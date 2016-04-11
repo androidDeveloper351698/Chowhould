@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/rl_fragment_refine_information_be_registed"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/x10"
+        android:visibility="gone" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/app_loading0" />
+
+        <TextView
+            android:id="@+id/tv_fragment_refine_information_registed_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" 
+            android:text="cwenhui"
+            android:textColor="@color/font_color_gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/x30"
+            android:text="您注册的手机号已被以上账户使用" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/x10"
+            android:text="请确认该账户是否为本人所有" />
+
+        <Button
+            android:id="@+id/btn_fragment_refine_information_is_mine"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y40"
+            android:layout_marginTop="@dimen/x15"
+            android:background="@color/app_color"
+            android:text="是我的，立即登陆"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_fragment_refine_information_register_with_phone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y40"
+            android:layout_marginTop="@dimen/x10"
+            android:background="@drawable/button_bg_with_app_theme"
+            android:text="换个手机号重新注册"
+            android:textColor="@color/app_color" />
+
+        <Button
+            android:id="@+id/btn_fragment_refine_information_register_with_email"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y40"
+            android:layout_marginTop="@dimen/x10"
+            android:background="@drawable/button_bg_with_app_theme"
+            android:text="使用邮箱继续注册"
+            android:textColor="@color/app_color" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_fragment_refine_information_registing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/x10" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y50"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="用户名:"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_fragment_refine_information_username"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:text="测试账号"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y50"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="密    码:"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_fragment_refine_information_password"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/y35"
+                android:layout_weight="2"
+                android:background="@drawable/input_bg_with_app_theme"
+                android:inputType="textPassword" >
+
+                <requestFocus />
+            </EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y50"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="重新输入密码:"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/et_fragment_refine_information_password_again"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/y35"
+                android:layout_weight="2"
+                android:background="@drawable/input_bg_with_app_theme"
+                android:inputType="textPassword" >
+
+                <requestFocus />
+            </EditText>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_fragment_refine_information_submit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y40"
+            android:background="@color/app_color2"
+            android:text="提交"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</LinearLayout>

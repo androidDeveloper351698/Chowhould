@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white" 
+    android:gravity="center_vertical"
+    android:orientation="vertical" 
+    android:padding="@dimen/x10">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/tv_quick_action_title"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/y30"
+            android:gravity="center"
+            android:textColor="@color/font_color_gray2"
+            android:textSize="18sp" 
+            android:text="港式车仔面"/>
+
+    </LinearLayout>
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider" 
+        android:layout_marginTop="@dimen/x10"/>
+
+</LinearLayout>

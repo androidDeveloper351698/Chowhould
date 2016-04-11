@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/fragment_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x40"
+        android:background="@color/white"
+        android:gravity="center_vertical" >
+
+        <Button
+            android:id="@+id/btn_activity_order_confirm_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="@dimen/x5"
+            android:background="@color/transparent"
+            android:drawableLeft="@drawable/top_bar2_arrow_back"
+            android:text="订单确认" />
+
+    </LinearLayout>
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider"/>
+    
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/x10"
+        android:background="@color/divider"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/x15" >
+
+        <TextView
+            android:id="@+id/tv_activity_confirm_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:text="cwenhui" />
+
+        <TextView
+            android:id="@+id/tv_activity_confirm_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_toRightOf="@+id/tv_activity_confirm_username"
+            android:text="1560****363" />
+
+        <TextView
+            android:id="@+id/tv_activity_confirm_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x10"
+			android:layout_below="@+id/tv_activity_confirm_username"
+            android:text="广东第二师范学院(花都校区)3-216" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/user_table_arrow" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x10"
+        android:src="@drawable/activity_order_confirm_special_line"
+        android:scaleType="fitXY"></ImageView>
+</LinearLayout>

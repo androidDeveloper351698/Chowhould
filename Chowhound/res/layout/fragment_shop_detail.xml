@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" > -->
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/fragment_bg"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/x15" 
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tv_fragment_shop_detail_shopname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/x10"
+                    android:text="加州汉堡"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/btn_fragment_shop_detail_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/y25"
+                    android:layout_toRightOf="@+id/tv_fragment_shop_detail_shopname"
+                    android:layout_alignTop="@+id/tv_fragment_shop_detail_shopname"
+                    android:background="@drawable/btn_text_bg"
+                    android:clickable="false"
+                    android:text="官方直营"
+                    android:textColor="@color/app_color2"
+                    android:textSize="12sp" />
+
+                <RatingBar
+                    android:id="@+id/ratingBar_fragment_shop_detail"
+                    style="@style/fragment_main_index_shops_sales_rating_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_fragment_shop_detail_shopname"
+                    android:layout_marginTop="@dimen/y15"
+                    android:numStars="5"
+                    android:rating="3.5" />
+
+                <TextView
+                    android:id="@+id/tv_fragment_shop_detail_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x10"
+                    android:layout_alignTop="@+id/ratingBar_fragment_shop_detail"
+                    android:layout_toRightOf="@+id/ratingBar_fragment_shop_detail"
+                    android:text="3.6分"
+                    android:textColor="@color/app_color2"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:id="@+id/fragment_shop_detail_describe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ratingBar_fragment_shop_detail"
+                    android:layout_marginBottom="@dimen/y20"
+                    android:layout_marginTop="@dimen/y15"
+                    android:gravity="center_vertical" >
+
+                    <TextView
+                        android:id="@+id/tv_fragment_shop_detail_sales_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="总销量"
+                        android:textColor="@color/font_color_gray2" />
+
+                    <TextView
+                        android:id="@+id/tv_fragment_shop_detail_sales"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x3"
+                        android:text="932"
+                        android:textColor="@color/font_color_gray2" />
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="@dimen/y13"
+                        android:layout_marginLeft="@dimen/x5"
+                        android:layout_marginRight="@dimen/x5"
+                        android:background="@color/divider" />
+
+                    <TextView
+                        android:id="@+id/tv_fragment_shop_detail_starting_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20"
+                        android:textColor="@color/font_color_gray2" />
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="元起送"
+                        android:textColor="@color/font_color_gray2" />
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="@dimen/y13"
+                        android:layout_marginLeft="@dimen/x5"
+                        android:layout_marginRight="@dimen/x5"
+                        android:background="@color/divider" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="配送费"
+                        android:textColor="@color/font_color_gray2" />
+
+                    <TextView
+                        android:id="@+id/tv_fragment_shop_detail_freight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2.0"
+                        android:textColor="@color/font_color_gray2" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="元"
+                        android:textColor="@color/font_color_gray2" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_fragment_shop_detail_shop_img"
+                    android:layout_width="@dimen/x80"
+                    android:layout_height="@dimen/x80"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/tv_fragment_shop_detail_shopname"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/app_loading0" />
+
+                <View
+                    android:id="@+id/fragment_shop_detail_divider1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/fragment_shop_detail_describe"
+                    android:background="@color/divider" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fragment_shop_detail_divider1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/y10" >
+
+                    <ImageView
+                        android:id="@+id/imageView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/x15"
+                        android:src="@drawable/fragment_shop_detail_address" />
+
+                    <TextView
+                        android:id="@+id/tv_fragment_shop_detail_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="花都新华镇凤华路"
+                        android:textColor="@color/font_color_gray2" />
+
+                    <TextView
+                        android:id="@+id/tv_fragment_shop_detail_distance"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="2.66"
+                        android:textColor="@color/font_color_gray2" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="千米"
+                        android:textColor="@color/font_color_gray2" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="@dimen/y30"
+                        android:layout_marginLeft="@dimen/x20"
+                        android:layout_marginRight="@dimen/x20"
+                        android:background="@color/divider" />
+
+                    <ImageView
+                        android:id="@+id/iv_fragment_index_scan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/x20"
+                        android:src="@drawable/fragment_shop_detail_phone" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/x10"
+                android:layout_marginTop="@dimen/x10"
+                android:padding="@dimen/x10" 
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/x15"
+                    android:src="@drawable/fragment_shop_detail_notice" />
+
+                <TextView
+                    android:id="@+id/tv_fragment_shop_detail_notice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:text="加州汉堡欢迎您的光临，免费送餐，5楼以上步梯请自己下来接餐，如有不便请谅解"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/x10"
+                android:paddingRight="@dimen/x10"
+                android:paddingTop="@dimen/x15"
+                android:paddingBottom="@dimen/x15"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/x15"
+                    android:src="@drawable/ddt_takeout_tag_icon" />
+
+                <TextView
+                    android:id="@+id/tv_fragment_shop_detail_discount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:text="满20减20(每部手机每日限用2次；每用户每天共有两次满减机会)"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/x10"
+                android:background="@color/divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/x15" 
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="商家证照"
+                        android:textColor="@color/font_color_gray"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/frag_mine_arrow" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/x10"
+                    android:background="@color/divider" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/x15"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="店铺二维码"
+                        android:textColor="@color/font_color_gray"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/frag_mine_arrow" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/x10"
+                    android:background="@color/divider" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/x15"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="营业时间："
+                        android:textColor="@color/font_color_gray"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10:00-24:00"
+                        android:textColor="@color/font_color_gray"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/x10"
+                android:background="@color/divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/x15"
+                android:background="@color/white" >
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="纠错反馈"
+                    android:textColor="@color/font_color_gray"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/frag_mine_arrow" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="@dimen/x10"
+                android:background="@color/divider" />
+        </LinearLayout>
+
+    </ScrollView>
+
+<!-- </LinearLayout> -->

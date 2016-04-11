@@ -1,0 +1,21 @@
+1459499844556	Rename field 'iv_activity_login_clean'
+1459499859428	Rename field 'clean'
+1459502524844	Change Layout
+1459577505718	Rename field 'rl_activity_register_region'
+1459577529461	Rename field 'et_activity_register_phone'
+1459577540746	Rename field 'btn_activity_register_next'
+1459579375405	Rename field 'iv_activity_register_pwd_clean'
+1459582419343	Delete elements
+1459582512077	Delete element
+1459582531490	Delete element
+1459585531684	Extract method 'initHandler'
+1459585847975	Convert local variable 'smssdkHelper' to field
+1459585914201	Convert local variable 'smssdkHelper' to field
+1459590019833	Rename field 'btn_fragment_security_code_again'
+1459591567682	Change Layout
+1459597431036	Change Layout
+1459597665073	Change Layout
+1459597759939	Change Layout
+1459598237074	Rename field 'tv_fragment_refine_information_username'
+1459600638143	Copy file
+1459608419089	Change Layout

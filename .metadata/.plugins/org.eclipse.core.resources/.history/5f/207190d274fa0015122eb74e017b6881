@@ -1,0 +1,75 @@
+package com.cwenhui.chowhound.bean;
+
+public class GoodsBean {
+	private int goodsId;
+	private String goodsName;
+	private int salesVolume;
+	private int price;
+	private String goodsImg;
+	private int selectedNum;
+	
+	public GoodsBean() {
+		super();
+	}
+
+	public GoodsBean(int goodsId, String goodsName, int salesVolume,
+			int price, String goodsImg) {
+		super();
+		this.goodsId = goodsId;
+		this.goodsName = goodsName;
+		this.salesVolume = salesVolume;
+		this.price = price;
+		this.goodsImg = goodsImg;
+		
+		selectedNum = 0;
+	}
+
+	public int getGoodsId() {
+		return goodsId;
+	}
+
+	public void setGoodsId(int goodsId) {
+		this.goodsId = goodsId;
+	}
+
+	public String getGoodsName() {
+		return goodsName;
+	}
+
+	public void setGoodsName(String goodsName) {
+		this.goodsName = goodsName;
+	}
+
+	public int getSalesVolume() {
+		return salesVolume;
+	}
+
+	public void setSalesVolume(int salesVolume) {
+		this.salesVolume = salesVolume;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public String getGoodsImg() {
+		return goodsImg;
+	}
+
+	public void setGoodsImg(String goodsImg) {
+		this.goodsImg = goodsImg;
+	}
+
+	public int getSelectedNum() {
+		return selectedNum;
+	}
+
+	public void setSelectedNum(int selectedNum) {
+		this.selectedNum = selectedNum;
+	}
+
+}
