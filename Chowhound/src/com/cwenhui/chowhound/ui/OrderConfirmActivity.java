@@ -54,7 +54,7 @@ public class OrderConfirmActivity extends Activity implements OnClickListener{
 	@SuppressWarnings("unchecked")
 	private void initData() {
 		selectedData = (List<GoodsBean>) getIntent().getExtras().get("selectedGoods");
-		shopName = getIntent().getExtras().getString("shopName");Log.e(TAG, shopName);
+		shopName = getIntent().getExtras().getString("shopName"); 
 		adapter = new OrderConfirmAdapter(this, selectedData, R.layout.item_activity_order_confirm_selected_goods);
 		for (GoodsBean bean : selectedData) {
 			sum += bean.getSelectedNum()*bean.getPrice();
@@ -135,10 +135,10 @@ public class OrderConfirmActivity extends Activity implements OnClickListener{
         RequestParams params = new RequestParams();  
         params.put("username", "cwenhui"); 								// 设置请求的参数名和参数值
         for (int i = 0; i < selectedData.size(); i++) {
-			params.put("orderDetails["+i+"].order.orderName", shopName);Log.e(TAG, shopName);
+			params.put("orderDetails["+i+"].order.orderName", shopName); 
 			params.put("orderDetails["+i+"].order.orderState", "未完成");
-			params.put("orderDetails["+i+"].goods.goodsId", selectedData.get(i).getGoodsId());Log.e(TAG, selectedData.get(i).getGoodsId()+"");
-			params.put("orderDetails["+i+"].goodsNum", selectedData.get(i).getSelectedNum());Log.e(TAG, selectedData.get(i).getSelectedNum()+"");
+			params.put("orderDetails["+i+"].goods.goodsId", selectedData.get(i).getGoodsId()); 
+			params.put("orderDetails["+i+"].goodsNum", selectedData.get(i).getSelectedNum()); 
 		}
 		HttpUtil.post(Configs.APISaveOrder, params, new AsyncHttpResponseHandler() {
 			
