@@ -19,7 +19,7 @@
             android:background="@color/transparent"
             android:drawableLeft="@drawable/top_bar2_arrow_back"
             android:text="港式车仔面馆"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <View
             android:layout_width="0dp"

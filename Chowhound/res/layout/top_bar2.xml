@@ -16,7 +16,7 @@
         android:src="@drawable/top_bar2_arrow_back" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tv_topbar2_shop_Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="港式车仔面"
@@ -28,7 +28,6 @@
         android:layout_weight="1" />
 
     <ImageView
-        android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ddt_head_search_icon" />

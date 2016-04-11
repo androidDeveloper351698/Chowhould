@@ -2390,7 +2390,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f060026;
         public static final int action_menu_presenter=0x7f060027;
         public static final int action_mode_close_button=0x7f06003a;
-        public static final int action_settings=0x7f060154;
+        public static final int action_settings=0x7f060155;
         public static final int activity_capture=0x7f060063;
         public static final int activity_capture_bottom_mask=0x7f060069;
         public static final int activity_capture_capture_containter=0x7f060064;
@@ -2412,7 +2412,7 @@ containing a value of this type.
         public static final int activity_register_container=0x7f0600a0;
         public static final int always=0x7f06001c;
         public static final int auto_focus=0x7f06002a;
-        public static final int background=0x7f060151;
+        public static final int background=0x7f060152;
         public static final int beginning=0x7f060021;
         public static final int both=0x7f060008;
         public static final int bottom=0x7f060003;
@@ -2563,7 +2563,7 @@ containing a value of this type.
         public static final int never=0x7f06001a;
         public static final int none=0x7f060000;
         public static final int normal=0x7f060011;
-        public static final int progress=0x7f060153;
+        public static final int progress=0x7f060154;
         public static final int progress_circular=0x7f060028;
         public static final int progress_horizontal=0x7f060029;
         public static final int pullDownFromTop=0x7f06000a;
@@ -2603,7 +2603,7 @@ containing a value of this type.
         public static final int search_plate=0x7f06004c;
         public static final int search_src_text=0x7f06004d;
         public static final int search_voice_btn=0x7f060051;
-        public static final int secondaryProgress=0x7f060152;
+        public static final int secondaryProgress=0x7f060153;
         public static final int shop_cart_layout_quickaction=0x7f060146;
         public static final int shop_cart_layout_quickaction2=0x7f060148;
         public static final int shortcut=0x7f060044;
@@ -2709,6 +2709,7 @@ containing a value of this type.
         public static final int tv_item_shop_cart_quickaction_price=0x7f060141;
         public static final int tv_layout_shop_cart_quickaction_clear=0x7f060147;
         public static final int tv_quick_action_title=0x7f06013f;
+        public static final int tv_topbar2_shop_Name=0x7f060151;
         public static final int underline=0x7f060002;
         public static final int up=0x7f060037;
         public static final int useLogo=0x7f060014;

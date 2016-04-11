@@ -8,19 +8,18 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
+import android.widget.TextView;
 
 import com.cwenhui.chowhound.adapter.ShopTabAdapter;
 import com.cwenhui.chowhound.fragment.CommentFragment;
 import com.cwenhui.chowhound.fragment.MenuFragment;
-import com.cwenhui.chowhound.fragment.MineFragment;
-import com.cwenhui.chowhound.fragment.OrderFragment;
 import com.cwenhui.chowhound.fragment.ShopDetailFragment;
 import com.example.chowhound.R;
 import com.viewpagerindicator.TabPageIndicator;
 
 public class ShopActivity extends FragmentActivity {
 	private final String Tag = "ShopActivity";
+	private TextView shopName;
 	private ViewPager mViewPager;
 	private TabPageIndicator mTabPageIndicator;
 	private ShopTabAdapter tabAdapter;
@@ -52,6 +51,8 @@ public class ShopActivity extends FragmentActivity {
 	}
 
 	private void initView() {
+		shopName = (TextView) findViewById(R.id.tv_topbar2_shop_Name);
+		shopName.setText(getIntent().getStringExtra("shopName"));
 		mViewPager = (ViewPager) findViewById(R.id.vp_activity_shop);
 		mTabPageIndicator = (TabPageIndicator) findViewById(R.id.indicator_activity_shop);
 		mViewPager.setAdapter(tabAdapter);

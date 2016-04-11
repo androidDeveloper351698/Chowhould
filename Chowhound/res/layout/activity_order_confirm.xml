@@ -18,6 +18,7 @@
             android:background="@color/transparent"
             android:drawableLeft="@drawable/top_bar2_arrow_back"
             android:padding="@dimen/x5"
+            android:textSize="18sp"
             android:text="订单确认" />
     </LinearLayout>
 

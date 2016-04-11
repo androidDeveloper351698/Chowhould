@@ -11,7 +11,8 @@ public class Configs {
 	public static final String APIOrderDetailsByOrderId = "http://www.cwenhui.com:8080/spring-mvc-study/api/getOrderDetails?";//orderId=2&pageNo=1&pageSize=5
 	public static final String APILogin = "http://www.cwenhui.com:8080/spring-mvc-study/api/login";	
 	public static final String APIRegister = "http://www.cwenhui.com:8080/spring-mvc-study/api/addUser";
-	public static final String APISaveOrder = "http://www.cwenhui.com:8080/spring-mvc-study/api/saveOrderByUid";
+	public static final String APISaveOrder = "http://www.cwenhui.com:8080/spring-mvc-study/api/saveOrderByUsername";
+	public static final String APIOderStateByOrderId = "http://www.cwenhui.com:8080/spring-mvc-study/api/getOrderStateByOrderId/";
 	
 	public static final String APITestForImg = "http://img.my.csdn.net/uploads/201504/12/1428806103_9476.png";
 

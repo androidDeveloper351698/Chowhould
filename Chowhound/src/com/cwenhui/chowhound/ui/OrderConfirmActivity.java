@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cwenhui.chowhound.adapter.OrderConfirmAdapter;
 import com.cwenhui.chowhound.bean.GoodsBean;
@@ -35,6 +36,7 @@ public class OrderConfirmActivity extends Activity implements OnClickListener{
 	private static final String TAG = "OrderConfirmActivity";
 	private ImageView line;
 	private TextView orderAccount, realAccount, realSum;
+	private TextView tvShopName;
 	private Button submit;
 	private ListView selectedGoods;
 	private List<GoodsBean> selectedData;
@@ -67,6 +69,7 @@ public class OrderConfirmActivity extends Activity implements OnClickListener{
 		orderAccount = (TextView) findViewById(R.id.tv_activity_order_confirm_order_amount);
 		realAccount = (TextView) findViewById(R.id.tv_activity_order_confirm_real_amount);
 		realSum = (TextView) findViewById(R.id.tv_activity_order_confirm_sum);
+		tvShopName = (TextView) findViewById(R.id.tv_activity_order_confirm_shop_name);
 		submit = (Button) findViewById(R.id.btn_activity_order_confirm_submit);
 		
 		WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
@@ -75,6 +78,7 @@ public class OrderConfirmActivity extends Activity implements OnClickListener{
 		orderAccount.setText(sum+"元");
 		realAccount.setText(sum+"元");
 		realSum.setText(sum+"元");
+		tvShopName.setText(shopName);
 		selectedGoods.setAdapter(adapter);
 		setListViewHeightBasedOnChildren(selectedGoods);
 		
@@ -136,7 +140,7 @@ public class OrderConfirmActivity extends Activity implements OnClickListener{
         params.put("username", "cwenhui"); 								// 设置请求的参数名和参数值
         for (int i = 0; i < selectedData.size(); i++) {
 			params.put("orderDetails["+i+"].order.orderName", shopName); 
-			params.put("orderDetails["+i+"].order.orderState", "未完成");
+			params.put("orderDetails["+i+"].order.orderState", "等待商家接单");
 			params.put("orderDetails["+i+"].goods.goodsId", selectedData.get(i).getGoodsId()); 
 			params.put("orderDetails["+i+"].goodsNum", selectedData.get(i).getSelectedNum()); 
 		}
@@ -144,11 +148,11 @@ public class OrderConfirmActivity extends Activity implements OnClickListener{
 			
 			@Override
 			public void onSuccess(int statusCode, Header[] headers, byte[] data) {
-				if(new String(data).equals("success")){
-					Intent intent = new Intent(OrderConfirmActivity.this, OrderTakingActivity.class);
-					intent.putExtras(getIntent().getExtras());
-					startActivity(intent); 
-				}
+				Intent intent = new Intent(OrderConfirmActivity.this, OrderTakingActivity.class);
+				Bundle bundle = getIntent().getExtras();
+				bundle.putInt("orderId", Integer.valueOf(new String(data))); 
+				intent.putExtras(bundle);
+				startActivity(intent); 
 			}
 			
 			@Override

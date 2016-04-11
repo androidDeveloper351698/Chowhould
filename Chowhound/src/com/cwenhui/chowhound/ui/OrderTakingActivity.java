@@ -4,31 +4,39 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.cwenhui.chowhound.adapter.OrderConfirmAdapter;
-import com.cwenhui.chowhound.bean.GoodsBean;
-import com.example.chowhound.R;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
-import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
+import org.apache.http.Header;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.format.Time;
+import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class OrderTakingActivity extends Activity implements OnRefreshListener2<ScrollView>{
+import com.cwenhui.chowhound.adapter.OrderConfirmAdapter;
+import com.cwenhui.chowhound.bean.GoodsBean;
+import com.cwenhui.chowhound.config.Configs;
+import com.cwenhui.chowhound.utils.HttpUtil;
+import com.example.chowhound.R;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
+import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+
+public class OrderTakingActivity extends Activity implements OnRefreshListener2<ScrollView>, OnClickListener{
 	private static final String TAG = "OrderTakingActivity";
 	private TextView orderAmount, realAmount;		//订单金额和实付金额
 	private TextView tvTimer;
+	private Button back;
 	private ListView lvOrderedGoods;				//显示已下订单商品的listview
 	private PullToRefreshScrollView scrollVew;
 	private List<GoodsBean> orderedGoods;			//已下订单的商品
@@ -75,10 +83,12 @@ public class OrderTakingActivity extends Activity implements OnRefreshListener2<
 		orderAmount = (TextView) findViewById(R.id.tv_activity_order_taking_order_amount);
 		realAmount = (TextView) findViewById(R.id.tv_activity_order_taking_real_amount);
 		tvTimer = (TextView) findViewById(R.id.tv_activity_order_taking_timer);
+		back = (Button) findViewById(R.id.btn_activity_order_taking_back);
 		lvOrderedGoods = (ListView) findViewById(R.id.lv_activity_order_taking_ordered_goods);
 		scrollVew = (PullToRefreshScrollView) findViewById(R.id.pull_refresh_scrollview);
 
 		scrollVew.setMode(Mode.PULL_FROM_START);
+		back.setText(getIntent().getExtras().getString("shopName")); 
 		orderAmount.setText(sum+"元");
 		realAmount.setText(sum+"元");
 		lvOrderedGoods.setAdapter(adapter);
@@ -112,7 +122,20 @@ public class OrderTakingActivity extends Activity implements OnRefreshListener2<
 
 	@Override
 	public void onPullDownToRefresh(PullToRefreshBase<ScrollView> refreshView) {
-		Toast.makeText(OrderTakingActivity.this, "pull down", 0).show();
+		HttpUtil.get(Configs.APIOderStateByOrderId+getIntent().getExtras().getInt("orderId"), new AsyncHttpResponseHandler() {
+			
+			@Override
+			public void onSuccess(int statusCode, Header[] headers, byte[] data) {
+				if(new String(data).equals("等待商家接单")){
+					Toast.makeText(OrderTakingActivity.this, new String(data), 0).show();
+				}
+			}
+			
+			@Override
+			public void onFailure(int arg0, Header[] arg1, byte[] arg2, Throwable throwable) {
+				Log.v(TAG, "throwable:"+throwable.toString());
+			}
+		});
 		refreshView.onRefreshComplete();
 	}
 
@@ -177,6 +200,12 @@ public class OrderTakingActivity extends Activity implements OnRefreshListener2<
 			}
 			
 		};
+	}
+
+	@Override
+	public void onClick(View arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
