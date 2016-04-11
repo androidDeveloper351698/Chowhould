@@ -152,7 +152,7 @@ public class OrderConfirmActivity extends Activity implements OnClickListener{
 				Bundle bundle = getIntent().getExtras();
 				bundle.putInt("orderId", Integer.valueOf(new String(data))); 
 				intent.putExtras(bundle);
-				startActivity(intent); 
+				startActivityForResult(intent, RESULT_FIRST_USER);
 			}
 			
 			@Override
@@ -161,4 +161,12 @@ public class OrderConfirmActivity extends Activity implements OnClickListener{
 			}
 		});
 	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		finish();
+	}
+	
+	
 }

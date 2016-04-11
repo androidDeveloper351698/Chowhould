@@ -96,6 +96,7 @@ public class OrderTakingActivity extends Activity implements OnRefreshListener2<
 	}
 
 	private void initEvent() {
+		back.setOnClickListener(this);
 		scrollVew.setOnRefreshListener(this);
 	}
 
@@ -203,9 +204,15 @@ public class OrderTakingActivity extends Activity implements OnRefreshListener2<
 	}
 
 	@Override
-	public void onClick(View arg0) {
-		// TODO Auto-generated method stub
-		
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btn_activity_order_taking_back:
+			finish();
+			break;
+
+		default:
+			break;
+		}
 	}
 
 }
