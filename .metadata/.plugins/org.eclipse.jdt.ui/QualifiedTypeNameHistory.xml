@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="android.view.WindowManager"/>
-<fullyQualifiedTypeName name="android.webkit.WebView.FindListener"/>
-<fullyQualifiedTypeName name="android.view.animation.ScaleAnimation"/>
-<fullyQualifiedTypeName name="android.graphics.Bitmap"/>
 <fullyQualifiedTypeName name="android.graphics.Canvas"/>
 <fullyQualifiedTypeName name="android.graphics.Bitmap.Config"/>
 <fullyQualifiedTypeName name="android.content.res.Resources"/>
@@ -25,14 +21,11 @@
 <fullyQualifiedTypeName name="com.cwenhui.chowhound.widget.ShopCartQuickAction2"/>
 <fullyQualifiedTypeName name="com.cwenhui.chowhound.widget.ShopCartQuickAction2.onClickShopCartListener"/>
 <fullyQualifiedTypeName name="android.widget.ListAdapter"/>
-<fullyQualifiedTypeName name="android.widget.LinearLayout"/>
-<fullyQualifiedTypeName name="android.view.View"/>
 <fullyQualifiedTypeName name="com.cwenhui.chowhound.adapter.PinnedHeaderListViewAdapter.Viewholder"/>
 <fullyQualifiedTypeName name="android.content.Context"/>
 <fullyQualifiedTypeName name="com.cwenhui.chowhound.widget.AddGoodsAnim"/>
 <fullyQualifiedTypeName name="com.example.chowhound.R"/>
 <fullyQualifiedTypeName name="com.example.chowhound.R.layout"/>
-<fullyQualifiedTypeName name="android.content.Intent"/>
 <fullyQualifiedTypeName name="android.widget.ListView"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="com.cwenhui.chowhound.bean.GoodsBean"/>
@@ -47,17 +40,24 @@
 <fullyQualifiedTypeName name="java.util.Timer"/>
 <fullyQualifiedTypeName name="java.util.TimerTask"/>
 <fullyQualifiedTypeName name="com.cwenhui.chowhound.utils.HttpUtil"/>
-<fullyQualifiedTypeName name="com.cwenhui.chowhound.config.Configs"/>
 <fullyQualifiedTypeName name="com.loopj.android.http.AsyncHttpResponseHandler"/>
 <fullyQualifiedTypeName name="android.os.Bundle"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="android.util.Log"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
-<fullyQualifiedTypeName name="com.cwenhui.chowhound.ui.OrderConfirmActivity"/>
-<fullyQualifiedTypeName name="android.widget.TextView"/>
 <fullyQualifiedTypeName name="android.widget.Button"/>
 <fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
 <fullyQualifiedTypeName name="com.example.chowhound.R.id"/>
 <fullyQualifiedTypeName name="android.widget.Toast"/>
 <fullyQualifiedTypeName name="com.cwenhui.chowhound.ui.OrderTakingActivity"/>
+<fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="com.cwenhui.chowhound.bean.DeliveryAddress"/>
+<fullyQualifiedTypeName name="android.widget.TextView"/>
+<fullyQualifiedTypeName name="android.widget.LinearLayout"/>
+<fullyQualifiedTypeName name="android.widget.RelativeLayout"/>
+<fullyQualifiedTypeName name="com.cwenhui.chowhound.config.Configs"/>
+<fullyQualifiedTypeName name="android.view.View"/>
+<fullyQualifiedTypeName name="android.content.Intent"/>
+<fullyQualifiedTypeName name="com.cwenhui.chowhound.ui.OrderConfirmActivity"/>
+<fullyQualifiedTypeName name="com.cwenhui.chowhound.ui.AddressActivity"/>
 </qualifiedTypeNameHistroy>

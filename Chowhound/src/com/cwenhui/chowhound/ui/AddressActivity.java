@@ -21,9 +21,11 @@ import android.widget.Toast;
 import com.baidu.mapapi.search.core.PoiInfo;
 import com.cwenhui.chowhound.adapter.PoiAdapter;
 import com.cwenhui.chowhound.bean.DeliveryAddress;
+import com.cwenhui.chowhound.config.Configs;
 import com.cwenhui.chowhound.utils.DBManager;
 import com.cwenhui.chowhound.utils.DialogViewHolder;
 import com.cwenhui.chowhound.utils.MapUtil;
+import com.cwenhui.chowhound.utils.SharedPreferencesHelper;
 import com.cwenhui.chowhound.widget.CustomDialog;
 import com.example.chowhound.R;
 
@@ -50,6 +52,7 @@ public class AddressActivity extends Activity implements OnClickListener {
 	 */
 	private LinearLayout addressList;
 	private DBManager mgr;
+	private SharedPreferencesHelper share;
 	/**
 	 * 从数据库中得到的用户设置的收货地址
 	 */
@@ -75,6 +78,7 @@ public class AddressActivity extends Activity implements OnClickListener {
 	}
 
 	private void initData() {
+		share = SharedPreferencesHelper.getInstance(this);
 		// 初始化DBManager
 		mgr = new DBManager(this);
 		// 初始化mapUtil
@@ -136,6 +140,9 @@ public class AddressActivity extends Activity implements OnClickListener {
 			name.setText(deliveryAddress.getAdrReceiver());
 			phone.setText(deliveryAddress.getAdrPhone());
 			address.setText(deliveryAddress.getAdrAddress());
+			if(share.getIntValue(Configs.CURRENT_ADDRESS_ID, -1) == deliveryAddress.getAddressId()){
+				view.findViewById(R.id.iv_item_delivery_address_list_checked).setVisibility(View.VISIBLE);
+			}
 			view.setLayoutParams(lp);
 			view.setId(deliveryAddress.getAddressId());		//为每一项收货地址添加id,方便监听时判断是哪个item
 			view.setOnClickListener(new AddressListListener());
@@ -147,6 +154,7 @@ public class AddressActivity extends Activity implements OnClickListener {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == RESULT_FIRST_USER && resultCode == RESULT_OK) {
+			saveCurrentDeliveryAddress(share.getIntValue(Configs.CURRENT_ADDRESS_ID));		//从AddAddressActivity保存收货地址后要更新当前收货地址
 			refleshAddressList();		//从AddAddressActivity保存收货地址后要更新收货地址列表
 		}
 	}
@@ -183,6 +191,25 @@ public class AddressActivity extends Activity implements OnClickListener {
 	}
 
 	/**
+	 * 保存当前收货信息
+	 * @param v
+	 */
+	private void saveCurrentDeliveryAddress(int addressId) {
+		if(addressId!=-1){
+			DeliveryAddress deliveryAddress = mgr.queryDeliveryAddress(addressId);
+			share.setIntValue(Configs.CURRENT_ADDRESS_ID, deliveryAddress.getAddressId());
+			share.setStringValue(Configs.CURRENT_RECEIVER, deliveryAddress.getAdrReceiver());
+			share.setStringValue(Configs.CURRENT_PHONE, deliveryAddress.getAdrPhone());
+			share.setStringValue(Configs.CURRENT_DELIVERY_ADDRESS, deliveryAddress.getAdrAddress());
+		}else{
+			share.setIntValue(Configs.CURRENT_ADDRESS_ID, -1);
+			share.setStringValue(Configs.CURRENT_RECEIVER, "");
+			share.setStringValue(Configs.CURRENT_PHONE, "");
+			share.setStringValue(Configs.CURRENT_DELIVERY_ADDRESS, location.getText().toString());//未设置当前收货地址时,地址信息保存当前位置,便于在IndexFragment中显示
+		}
+	}
+
+	/**
 	 * 实现对收货地址中每一项的监听
 	 * @author chenwenhui
 	 */
@@ -197,11 +224,14 @@ public class AddressActivity extends Activity implements OnClickListener {
 				dialog.dismiss();
 			}else if(v.getId() == R.id.btn_dialog_activity_address_delete){
 				mgr.deleteDeliveryAddress(clickedItem);			//删除收货地址
+				saveCurrentDeliveryAddress(-1);					//删除收货地址后把保存在sharedpreference的当前收货地址信息也清除
 				refleshAddressList();							//删除后也要刷新收货地址列表
 				dialog.dismiss();
 			}else{
-				Toast.makeText(AddressActivity.this, "--------->" + v.getId(),
-						Toast.LENGTH_SHORT).show();
+				//将当前收货地址信息保存在SharedPreference中
+				saveCurrentDeliveryAddress(v.getId());
+				setResult(RESULT_OK);							//返回OrderConfirmActivity时,通知OrderConfirmActivity显示收货信息;
+				finish();
 			}
 		}
 

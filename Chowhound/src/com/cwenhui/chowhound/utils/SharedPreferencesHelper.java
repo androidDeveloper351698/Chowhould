@@ -18,7 +18,8 @@ public class SharedPreferencesHelper {
 			Context context) {
 		if (INSTANCE == null) {
 			INSTANCE = new SharedPreferencesHelper();
-			INSTANCE.preferences = PreferenceManager.getDefaultSharedPreferences(context);
+			INSTANCE.preferences = PreferenceManager
+					.getDefaultSharedPreferences(context);
 		}
 		return INSTANCE;
 	}
@@ -140,14 +141,16 @@ public class SharedPreferencesHelper {
 	public float getFloatValue(String key, float value) {
 		return preferences.getFloat(key, value);
 	}
-	
-	public Set<String> getStringSetValue(String key){
+
+	public Set<String> getStringSetValue(String key) {
 		return preferences.getStringSet(key, null);
 	}
-	public Set<String> getStringSetValue(String key, Set<String> value){
+
+	public Set<String> getStringSetValue(String key, Set<String> value) {
 		return preferences.getStringSet(key, value);
 	}
-	public void setStringSetValue(String key, Set<String> value){
+
+	public void setStringSetValue(String key, Set<String> value) {
 		preferences.edit().putStringSet(key, value).commit();
 	}
 }

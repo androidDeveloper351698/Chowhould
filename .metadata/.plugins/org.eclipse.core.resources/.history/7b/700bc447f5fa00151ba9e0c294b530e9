@@ -1,5 +1,0 @@
-package com.cwenhui.chowhound.widget;
-
-public class LoginQuickAction extends CustomQuickAction<T> {
-
-}

@@ -15,7 +15,7 @@
         android:src="@drawable/activity_main_top_bar_address" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tv_fragment_index_delivery_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:singleLine="true"

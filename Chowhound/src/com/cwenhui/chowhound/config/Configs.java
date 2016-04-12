@@ -20,10 +20,17 @@ public class Configs {
 	
 	public static final boolean DEVELOPER_MODE = false;
 	
-	public static final String CURRENT_USER="currentUser";
-	public static final String USERNAMES="usernames";
-	public static final String LOGIN_STATE="loginState";
+	public static final String CURRENT_USER="currentUser";				//当前登录用户的用户名
+	public static final String USERNAMES="usernames";					//用户使用过的用户名
+	public static final String LOGIN_STATE="loginState";				//当前的登录状态
 	
+	//当前收货地址信息
+	public static final String CURRENT_ADDRESS_ID="currentAddressId";						//id用来判断是哪个item被选中,从而显示该item的勾
+	public static final String CURRENT_DELIVERY_ADDRESS="currentDeliveryAddress";
+	public static final String CURRENT_RECEIVER="currentReceiver";
+	public static final String CURRENT_PHONE="currentPhone";
+	
+	//mob短信验证
 	public static final String SHARESDK_APPKEY = "112de214a263d";
 	public static final String SHARESDK_APPSECRET = "5a2e543493406be13e1e68c36aeff181";
 }

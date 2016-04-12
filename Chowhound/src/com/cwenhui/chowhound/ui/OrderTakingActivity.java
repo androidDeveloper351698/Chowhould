@@ -127,9 +127,9 @@ public class OrderTakingActivity extends Activity implements OnRefreshListener2<
 			
 			@Override
 			public void onSuccess(int statusCode, Header[] headers, byte[] data) {
-				if(new String(data).equals("等待商家接单")){
+//				if(new String(data).equals("等待商家接单")){
 					Toast.makeText(OrderTakingActivity.this, new String(data), 0).show();
-				}
+//				}
 			}
 			
 			@Override

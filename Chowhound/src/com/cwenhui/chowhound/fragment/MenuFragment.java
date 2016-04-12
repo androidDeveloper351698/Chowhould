@@ -217,7 +217,9 @@ public class MenuFragment extends Fragment implements OnItemClickListener, OnScr
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		clearShopCart();
+		if(requestCode==getActivity().RESULT_FIRST_USER && resultCode==getActivity().RESULT_OK){
+			clearShopCart();
+		}
 	}
 
 	private void setSumTextView(int totalMoney) {

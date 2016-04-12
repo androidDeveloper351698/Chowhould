@@ -18,8 +18,8 @@
             android:background="@color/transparent"
             android:drawableLeft="@drawable/top_bar2_arrow_back"
             android:padding="@dimen/x5"
-            android:textSize="18sp"
-            android:text="订单确认" />
+            android:text="订单确认"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <ScrollView
@@ -45,43 +45,69 @@
                 android:layout_marginTop="@dimen/x10"
                 android:background="@color/divider" />
 
-            <RelativeLayout
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/x15"
-                android:background="@color/white" >
+                android:layout_height="wrap_content" >
 
-                <TextView
-                    android:id="@+id/tv_activity_confirm_username"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:text="cwenhui" />
+                <LinearLayout
+                    android:id="@+id/ll_order_confirm_select_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/x80" 
+                    android:visibility="gone" 
+                    android:background="@color/white">
 
-                <TextView
-                    android:id="@+id/tv_activity_confirm_phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/x10"
-                    android:layout_toRightOf="@+id/tv_activity_confirm_username"
-                    android:text="1560****363" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/activity_order_confirm_add_address"
+                        android:drawableRight="@drawable/user_table_arrow"
+                        android:gravity="center_vertical"
+                        android:text=" 请选择收货地址       "
+                        android:textColor="@color/app_color"
+                        android:textSize="16sp" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_activity_confirm_address"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:id="@+id/rl_activity_order_confirm_address"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_activity_confirm_username"
-                    android:layout_marginTop="@dimen/x10"
-                    android:text="广东第二师范学院(花都校区)3-216" />
+                    android:background="@color/white"
+                    android:padding="@dimen/x15">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/user_table_arrow" />
-            </RelativeLayout>
+                    <TextView
+                        android:id="@+id/tv_activity_confirm_receiver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:text="cwenhui" />
+
+                    <TextView
+                        android:id="@+id/tv_activity_confirm_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x10"
+                        android:layout_toRightOf="@+id/tv_activity_confirm_receiver"
+                        android:text="1560****363" />
+
+                    <TextView
+                        android:id="@+id/tv_activity_confirm_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_activity_confirm_receiver"
+                        android:layout_marginTop="@dimen/x10"
+                        android:text="广东第二师范学院(花都校区)3-216" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/user_table_arrow" />
+                </RelativeLayout>
+            </FrameLayout>
 
             <ImageView
                 android:id="@+id/iv_activity_order_confirm_line"
@@ -100,9 +126,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:orientation="vertical"
-                android:padding="@dimen/x10" 
-                android:background="@color/white" >
+                android:padding="@dimen/x10" >
 
                 <LinearLayout
                     android:id="@+id/ll_activity_order_confirm_reveive_time"
@@ -156,7 +182,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/divider" />
-            
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -166,8 +192,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/x10" 
-                android:background="@color/white" >
+                android:background="@color/white"
+                android:padding="@dimen/x10" >
 
                 <TextView
                     android:id="@+id/tv_activity_order_confirm_shop_name"
@@ -194,16 +220,16 @@
                 android:id="@+id/lv_activity_order_confirm_goods"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:cacheColorHint="#00000000"
-                android:divider="#00000000" 
-                android:background="@color/white" >
+                android:divider="#00000000" >
             </ListView>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/x10"
-                android:background="@color/white"  >
+                android:background="@color/white"
+                android:padding="@dimen/x10" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -224,12 +250,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:orientation="vertical"
+                android:paddingBottom="@dimen/x10"
                 android:paddingLeft="@dimen/x10"
                 android:paddingRight="@dimen/x10"
-                android:paddingBottom="@dimen/x10"
-                android:paddingTop="@dimen/x40"
-                android:background="@color/white"  >
+                android:paddingTop="@dimen/x40" >
 
                 <LinearLayout
                     android:layout_width="match_parent"

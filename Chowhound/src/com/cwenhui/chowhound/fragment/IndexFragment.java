@@ -24,6 +24,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cwenhui.chowhound.adapter.CommonAdapter;
@@ -36,6 +37,7 @@ import com.cwenhui.chowhound.ui.AddressActivity;
 import com.cwenhui.chowhound.ui.CaptureActivity;
 import com.cwenhui.chowhound.ui.ShopActivity;
 import com.cwenhui.chowhound.utils.GetDataTask;
+import com.cwenhui.chowhound.utils.SharedPreferencesHelper;
 //import com.cwenhui.chowhound.utils.ImageLoader;
 import com.cwenhui.chowhound.utils.ViewHolder;
 import com.cwenhui.chowhound.widget.GuideGallery;
@@ -76,8 +78,10 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 	private boolean isExit = false;
 	Timer autoGallery = new Timer(); 							// Gallery的计时器
 
+	private TextView deliveryAddress;
 	private ImageView scan; 									// 扫码
-	private LinearLayout address;	 							// 选址
+	private LinearLayout selectAddress;	 							// 选址
+	private SharedPreferencesHelper share;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -91,11 +95,14 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 	}
 
 	private void initView() {
+		share = SharedPreferencesHelper.getInstance(getActivity());
 		// item中的各个控件
 		scan = (ImageView) mView.findViewById(R.id.iv_fragment_index_scan);
-		address = (LinearLayout) mView.findViewById(R.id.fragment_index_top_bar);
+		deliveryAddress = (TextView) mView.findViewById(R.id.tv_fragment_index_delivery_address);
+		selectAddress = (LinearLayout) mView.findViewById(R.id.fragment_index_top_bar);
+		deliveryAddress.setText(share.getStringValue(Configs.CURRENT_DELIVERY_ADDRESS, "暂未设置收货地址"));
 		scan.setOnClickListener(this);
-		address.setOnClickListener(this);
+		selectAddress.setOnClickListener(this);
 
 		mPullRefreshListView = (PullToRefreshListView) mView.findViewById(R.id.pull_refresh_list_fragment_index);
 		mPullRefreshListView.setMode(Mode.BOTH); 								// 设置你需要刷新的模式,BOTH是下拉和上拉都可以
@@ -271,6 +278,12 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 		timeTask.timeCondition = false;
 	}
 	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		deliveryAddress.setText(share.getStringValue(Configs.CURRENT_DELIVERY_ADDRESS, "暂未设置收货地址"));
+	}
+
 	/*
 	 * firstVisibleItem:表示在现时屏幕第一个ListItem(部分显示的ListItem也算)在整个ListView的位置
 	 * (下标从0开始) visibleItemCount:表示在现时屏幕可以见到的ListItem(部分显示的ListItem也算)总数
@@ -325,7 +338,8 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 
 		case R.id.fragment_index_top_bar:
 			intent = new Intent(getActivity(), AddressActivity.class);
-			startActivity(intent);
+//			startActivity(intent);
+			startActivityForResult(intent, getActivity().RESULT_FIRST_USER);
 		default:
 			break;
 		}
