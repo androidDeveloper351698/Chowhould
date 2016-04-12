@@ -1,5 +1,0 @@
-package com.cwenhui.chowhound.adapter;
-
-public class OrderConfirmAdapter extends CommonAdapter<T> {
-
-}

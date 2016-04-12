@@ -202,7 +202,8 @@ public class MenuFragment extends Fragment implements OnItemClickListener, OnScr
 				bundle.putParcelableArrayList("selectedGoods", (ArrayList<? extends Parcelable>) headerListViewAdapter.getSelectedItem());
 				bundle.putString("shopName", getArguments().getString("shopName"));
 				intent.putExtras(bundle);
-				startActivity(intent);
+//				startActivity(intent);
+				startActivityForResult(intent, getActivity().RESULT_FIRST_USER);
 			}else{
 				Toast.makeText(getActivity(), "未选择商品", 0).show();
 			}
@@ -211,6 +212,12 @@ public class MenuFragment extends Fragment implements OnItemClickListener, OnScr
 			break;
 		}
 		
+	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		clearShopCart();
 	}
 
 	private void setSumTextView(int totalMoney) {
@@ -257,6 +264,13 @@ public class MenuFragment extends Fragment implements OnItemClickListener, OnScr
 
 	@Override
 	public void onClickClear(View view) {
+		clearShopCart();
+	}
+
+	/**
+	 * 清空购物车
+	 */
+	private void clearShopCart() {
 		quickAction2.removeAll(bottomBar);
 		List<GoodsBean> selected = headerListViewAdapter.getSelectedItem();
 		for (GoodsBean goodsBean : selected) {
@@ -266,7 +280,6 @@ public class MenuFragment extends Fragment implements OnItemClickListener, OnScr
 		selected.clear();
 		setSumTextView(0);
 		setBuyNumTextView(0);
-//		headerListViewAdapter.notifyDataSetChanged();
 	}
 	/**
 	 * 获取被改变的数据进行局部更新
