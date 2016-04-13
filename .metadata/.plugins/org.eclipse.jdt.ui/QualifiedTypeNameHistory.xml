@@ -55,9 +55,9 @@
 <fullyQualifiedTypeName name="android.widget.TextView"/>
 <fullyQualifiedTypeName name="android.widget.LinearLayout"/>
 <fullyQualifiedTypeName name="android.widget.RelativeLayout"/>
-<fullyQualifiedTypeName name="com.cwenhui.chowhound.config.Configs"/>
 <fullyQualifiedTypeName name="android.view.View"/>
 <fullyQualifiedTypeName name="android.content.Intent"/>
 <fullyQualifiedTypeName name="com.cwenhui.chowhound.ui.OrderConfirmActivity"/>
 <fullyQualifiedTypeName name="com.cwenhui.chowhound.ui.AddressActivity"/>
+<fullyQualifiedTypeName name="com.cwenhui.chowhound.config.Configs"/>
 </qualifiedTypeNameHistroy>

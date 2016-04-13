@@ -167,8 +167,11 @@ public class OrderConfirmActivity extends Activity implements OnClickListener{
 		// 创建请求参数的封装的对象  
         RequestParams params = new RequestParams();  
         params.put("username", "cwenhui"); 								// 设置请求的参数名和参数值
+    	params.put("orderDetails[0].order.orderName", shopName); 
+    	params.put("orderDetails[0].order.orderReceiver", share.getStringValue(Configs.CURRENT_RECEIVER));
+    	params.put("orderDetails[0].order.orderDeliveryAddress", share.getStringValue(Configs.CURRENT_DELIVERY_ADDRESS));
+    	params.put("orderDetails[0].order.orderPhone", share.getStringValue(Configs.CURRENT_PHONE));
         for (int i = 0; i < selectedData.size(); i++) {
-			params.put("orderDetails["+i+"].order.orderName", shopName); 
 			params.put("orderDetails["+i+"].order.orderState", "等待商家接单");
 			params.put("orderDetails["+i+"].goods.goodsId", selectedData.get(i).getGoodsId()); 
 			params.put("orderDetails["+i+"].goodsNum", selectedData.get(i).getSelectedNum()); 
