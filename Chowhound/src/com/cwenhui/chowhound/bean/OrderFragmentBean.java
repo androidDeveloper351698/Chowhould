@@ -3,6 +3,7 @@ package com.cwenhui.chowhound.bean;
 
 public class OrderFragmentBean {
 	private static final String TAG = "OrderFragmentBean";
+	private int orderId;
 	private String orderName;
 	private String shopImg;
 	private String goodsName;
@@ -10,9 +11,11 @@ public class OrderFragmentBean {
 	private String orderState; // 0 待付款 , 1 等待商家接单, 2 派送中 , 3 买家验收 , 4 订单完成,
 	private int totalPrice;
 
-	public OrderFragmentBean(String orderName, String shopImg,
+	public OrderFragmentBean(int orderId, String orderName, String shopImg,
 			String goodsName, String consumeTime, String orderState,
 			int totalPrice) {
+		super();
+		this.orderId = orderId;
 		this.orderName = orderName;
 		this.shopImg = shopImg;
 		this.goodsName = goodsName;
@@ -21,8 +24,27 @@ public class OrderFragmentBean {
 		this.totalPrice = totalPrice;
 	}
 
+//	public OrderFragmentBean(String orderName, String shopImg,
+//			String goodsName, String consumeTime, String orderState,
+//			int totalPrice) {
+//		this.orderName = orderName;
+//		this.shopImg = shopImg;
+//		this.goodsName = goodsName;
+//		this.consumeTime = consumeTime;
+//		this.orderState = orderState;
+//		this.totalPrice = totalPrice;
+//	}
+	
 	public String getOrderName() {
 		return orderName;
+	}
+
+	public int getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
 	}
 
 	public void setOrderName(String orderName) {

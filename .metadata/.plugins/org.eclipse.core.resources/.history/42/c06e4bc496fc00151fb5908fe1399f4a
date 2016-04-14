@@ -1,7 +1,0 @@
-package com.cwenhui.chowhound.widget;
-
-import android.view.ViewGroup;
-
-public class AddGoodsAnim {
-	private ViewGroup anim_mask_layout;									// 动画层,用来放在界面上跑的小图片
-}
