@@ -24,7 +24,6 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.cwenhui.chowhound.adapter.OrderConfirmAdapter;
 import com.cwenhui.chowhound.bean.GoodsBean;
@@ -166,7 +165,7 @@ public class OrderConfirmActivity extends Activity implements OnClickListener{
 	public void submitOrder(){
 		// 创建请求参数的封装的对象  
         RequestParams params = new RequestParams();  
-        params.put("username", "cwenhui"); 								// 设置请求的参数名和参数值
+        params.put("username", share.getStringValue(Configs.CURRENT_USER)); 								// 设置请求的参数名和参数值
     	params.put("orderDetails[0].order.orderName", shopName); 
     	params.put("orderDetails[0].order.orderReceiver", share.getStringValue(Configs.CURRENT_RECEIVER));
     	params.put("orderDetails[0].order.orderDeliveryAddress", share.getStringValue(Configs.CURRENT_DELIVERY_ADDRESS));

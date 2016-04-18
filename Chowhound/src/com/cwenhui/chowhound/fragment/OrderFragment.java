@@ -44,7 +44,6 @@ public class OrderFragment extends Fragment implements OnRefreshListener2<ListVi
 	private int lastOrderId = -1;
 	private int totalPrice = 0;
 	private SharedPreferencesHelper share;
-	private String uid;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,8 +78,9 @@ public class OrderFragment extends Fragment implements OnRefreshListener2<ListVi
 				OrderFragmentBean bean = null;
 				try {
 					JSONArray orderDetails = new JSONArray(new String(data));
-					if(tag == PULL_DOWN){													// 如果是下拉刷新，则先清除搜游数据，然后重新加载
+					if(tag == PULL_DOWN){												// 如果是下拉刷新，则先清除搜游数据，然后重新加载
 						orders.clear();
+						lastOrderId = -1;												//下拉刷新后,要将lastOrderId置为-1,否则当只有一个订单时下面的bean会报空指针
 						PAGE = 2;
 					}
 					for (int i = 0; i < orderDetails.length(); i++) {
@@ -136,14 +136,16 @@ public class OrderFragment extends Fragment implements OnRefreshListener2<ListVi
 
 	/**
 	 * 如果切换了用户，则刷新订单页面
+	 * 每次切换到当前fragment时,都刷新页面,这样添加新的订单时就可以及时显示新的订单了
 	 */
 	public void refleshData(){
 		if(share == null) share = SharedPreferencesHelper.getInstance(getActivity());
-		if(uid == null) uid = share.getStringValue(Configs.CURRENT_USER_ID);
-		String uid = share.getStringValue(Configs.CURRENT_USER_ID);Log.e(TAG, "uid:"+uid+"  this.uid:"+this.uid);
-		if(!this.uid.equals(uid)){
-			this.uid = uid;
-			getDataTask(Configs.APIOrderDetailsByUid+"uid="+ this.uid +"&pageNo=1&pageSize=5", PULL_DOWN); 
-		}
+//		if(uid == null) uid = share.getStringValue(Configs.CURRENT_USER_ID);
+//		String uid = share.getStringValue(Configs.CURRENT_USER_ID); 
+//		if(!this.uid.equals(uid)){
+//			this.uid = uid;
+//			getDataTask(Configs.APIOrderDetailsByUid+"uid="+ this.uid +"&pageNo=1&pageSize=5", PULL_DOWN); 
+//		}
+		getDataTask(Configs.APIOrderDetailsByUid+"uid="+ share.getStringValue(Configs.CURRENT_USER_ID) +"&pageNo=1&pageSize=5", PULL_DOWN); 
 	}
 }
