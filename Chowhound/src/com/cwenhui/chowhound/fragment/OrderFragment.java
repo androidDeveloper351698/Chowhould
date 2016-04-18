@@ -1,7 +1,5 @@
 package com.cwenhui.chowhound.fragment;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,21 +13,15 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.cwenhui.chowhound.adapter.CommonAdapter;
 import com.cwenhui.chowhound.adapter.OrderFragmentAdapter;
 import com.cwenhui.chowhound.bean.OrderFragmentBean;
 import com.cwenhui.chowhound.config.Configs;
 import com.cwenhui.chowhound.utils.HttpUtil;
-import com.cwenhui.chowhound.utils.ImageFirstDisplayListener;
-import com.cwenhui.chowhound.utils.ViewHolder;
+import com.cwenhui.chowhound.utils.SharedPreferencesHelper;
 import com.cwenhui.chowhound.widget.LoadingDialog;
 import com.example.chowhound.R;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -37,10 +29,6 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
-import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
 public class OrderFragment extends Fragment implements OnRefreshListener2<ListView> {
 	private static final int INIT = 0;
@@ -55,6 +43,8 @@ public class OrderFragment extends Fragment implements OnRefreshListener2<ListVi
 	private OrderFragmentAdapter adapter;
 	private int lastOrderId = -1;
 	private int totalPrice = 0;
+	private SharedPreferencesHelper share;
+	private String uid;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -75,8 +65,9 @@ public class OrderFragment extends Fragment implements OnRefreshListener2<ListVi
 	}
 
 	private void initData() {
+		share = SharedPreferencesHelper.getInstance(getActivity());
 		orders = new ArrayList<OrderFragmentBean>();
-		getDataTask(Configs.APIOrderDetailsByUid+"uid=6&pageNo=1&pageSize=5", INIT);
+		getDataTask(Configs.APIOrderDetailsByUid+"uid="+share.getStringValue(Configs.CURRENT_USER_ID)+"&pageNo=1&pageSize=5", INIT); 
 	}
 
 	private void getDataTask(String url, final int tag) {
@@ -132,13 +123,27 @@ public class OrderFragment extends Fragment implements OnRefreshListener2<ListVi
 	@Override
 	public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
 		Toast.makeText(getActivity(), "Pull Down", Toast.LENGTH_SHORT).show();
-		getDataTask(Configs.APIOrderDetailsByUid+"uid=6&pageNo=1&pageSize="+PAGE_SIZE, PULL_DOWN);
+		getDataTask(Configs.APIOrderDetailsByUid+"uid="+share.getStringValue(Configs.CURRENT_USER_ID)+
+				"&pageNo=1&pageSize="+PAGE_SIZE, PULL_DOWN);
 	}
 
 	@Override
 	public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
 		Toast.makeText(getActivity(), "Pull Up-->"+PAGE, Toast.LENGTH_SHORT).show();
-		getDataTask(Configs.APIOrderDetailsByUid+"uid=6&pageNo="+PAGE+"&pageSize="+PAGE_SIZE, PULL_UP);
+		getDataTask(Configs.APIOrderDetailsByUid+"uid="+share.getStringValue(Configs.CURRENT_USER_ID)+
+				"&pageNo="+PAGE+"&pageSize="+PAGE_SIZE, PULL_UP);
 	}
 
+	/**
+	 * 如果切换了用户，则刷新订单页面
+	 */
+	public void refleshData(){
+		if(share == null) share = SharedPreferencesHelper.getInstance(getActivity());
+		if(uid == null) uid = share.getStringValue(Configs.CURRENT_USER_ID);
+		String uid = share.getStringValue(Configs.CURRENT_USER_ID);Log.e(TAG, "uid:"+uid+"  this.uid:"+this.uid);
+		if(!this.uid.equals(uid)){
+			this.uid = uid;
+			getDataTask(Configs.APIOrderDetailsByUid+"uid="+ this.uid +"&pageNo=1&pageSize=5", PULL_DOWN); 
+		}
+	}
 }

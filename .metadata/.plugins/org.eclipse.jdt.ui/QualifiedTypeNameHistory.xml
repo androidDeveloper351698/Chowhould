@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="android.os.Parcelable"/>
-<fullyQualifiedTypeName name="android.view.ViewGroup"/>
-<fullyQualifiedTypeName name="com.cwenhui.chowhound.bean.LoginActionItem"/>
 <fullyQualifiedTypeName name="android.view.LayoutInflater"/>
 <fullyQualifiedTypeName name="com.cwenhui.chowhound.widget.LoginQuickAction"/>
 <fullyQualifiedTypeName name="java.util.HashSet"/>
@@ -36,8 +33,6 @@
 <fullyQualifiedTypeName name="java.util.Timer"/>
 <fullyQualifiedTypeName name="java.util.TimerTask"/>
 <fullyQualifiedTypeName name="android.os.Bundle"/>
-<fullyQualifiedTypeName name="android.util.Log"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="com.cwenhui.chowhound.ui.OrderTakingActivity"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="com.cwenhui.chowhound.bean.DeliveryAddress"/>
@@ -56,8 +51,13 @@
 <fullyQualifiedTypeName name="android.widget.Button"/>
 <fullyQualifiedTypeName name="android.widget.ImageButton"/>
 <fullyQualifiedTypeName name="com.cwenhui.chowhound.utils.HttpUtil"/>
-<fullyQualifiedTypeName name="com.cwenhui.chowhound.config.Configs"/>
 <fullyQualifiedTypeName name="com.loopj.android.http.AsyncHttpResponseHandler"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="com.cwenhui.chowhound.bean.OrderFragmentBean"/>
+<fullyQualifiedTypeName name="com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="com.cwenhui.chowhound.fragment.OrderFragment"/>
+<fullyQualifiedTypeName name="com.cwenhui.chowhound.utils.SharedPreferencesHelper"/>
+<fullyQualifiedTypeName name="com.cwenhui.chowhound.config.Configs"/>
+<fullyQualifiedTypeName name="android.util.Log"/>
 </qualifiedTypeNameHistroy>

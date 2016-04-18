@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_alignTop="@+id/item_frag_order_content"
+        android:background="#55aaaaaa" />
+
+    <RelativeLayout
+        android:id="@+id/item_frag_order_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/x10" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y30"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/item_fragment_order_shopname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="煲仔饭老火汤"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/item_fragment_order_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffffffff"
+                android:focusable="false"
+                android:src="@drawable/item_fragment_order_delete" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignTop="@+id/item_frag_order_detail"
+            android:background="#55aaaaaa" />
+
+        <RelativeLayout
+            android:id="@+id/item_frag_order_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout1"
+            android:paddingBottom="@dimen/y10"
+            android:paddingTop="@dimen/y10" >
+
+            <ImageView
+                android:id="@+id/item_frag_order_shop_image"
+                android:layout_width="@dimen/x70"
+                android:layout_height="@dimen/x70"
+                android:layout_marginRight="@dimen/x10"
+                android:src="@drawable/app_loading0" />
+
+            <TextView
+                android:id="@+id/item_frag_order_goods_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/item_frag_order_shop_image"
+                android:text="腊鸭腿饭"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/item_frag_order_consume_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/item_frag_order_shop_image"
+                android:layout_toRightOf="@+id/item_frag_order_shop_image"
+                android:text="03-06 12:06"
+                android:textColor="#666666" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/item_frag_order_line"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignBottom="@+id/item_frag_order_detail"
+            android:background="#55aaaaaa" />
+
+        <LinearLayout
+            android:id="@+id/item_frag_order_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_frag_order_line"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/y6"
+            android:paddingTop="@dimen/y6" >
+
+            <TextView
+                android:id="@+id/tv_item_frag_order_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="订单完成"
+                android:textColor="#ea8010" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="订单总价: " />
+
+            <TextView
+                android:id="@+id/tv_item_frag_total_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="元" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_frag_order_status"
+            android:gravity="right|center_vertical"
+            android:orientation="horizontal" >
+
+            <Button
+                android:layout_width="@dimen/x60"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/x10"
+                android:background="@drawable/btn_text_bg"
+                android:text="再来一单"
+                android:padding="@dimen/x5"
+                android:gravity="center"
+                android:textSize="12sp"
+				android:textColor="#F18D60"
+                android:focusable="false"/>
+            
+            <Button
+                android:layout_width="@dimen/x60"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_text_bg"
+                android:text="评论"
+                android:padding="@dimen/x5"
+                android:gravity="center"
+                android:textSize="12sp"
+				android:textColor="#F18D60"
+                android:focusable="false"/>
+
+            <!-- <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffffffff"
+                android:src="@drawable/item_frag_order_comment" /> -->
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_alignBottom="@+id/item_frag_order_content"
+        android:background="#55aaaaaa" />
+
+</RelativeLayout>

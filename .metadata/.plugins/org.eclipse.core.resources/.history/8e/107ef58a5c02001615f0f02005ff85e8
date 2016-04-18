@@ -1,0 +1,22 @@
+package com.cwenhui.chowhound.adapter;
+
+import java.util.List;
+
+import android.content.Context;
+
+import com.cwenhui.chowhound.bean.OrderFragmentBean;
+import com.cwenhui.chowhound.utils.ViewHolder;
+
+public class OrderFragmentAdapter extends CommonAdapter<OrderFragmentBean> {
+
+	public OrderFragmentAdapter(Context context, List<OrderFragmentBean> datas,
+			int layoutId) {
+		super(context, datas, layoutId);
+	}
+
+	@Override
+	public void convert(ViewHolder holder, OrderFragmentBean t) {
+		
+	}
+
+}

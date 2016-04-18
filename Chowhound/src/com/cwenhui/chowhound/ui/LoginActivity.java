@@ -188,20 +188,21 @@ public class LoginActivity extends Activity implements TextWatcher, OnClickListe
 			
 			@Override
 			public void onSuccess(int statusCode, Header[] headers, byte[] data) {
-				if(new String(data).equals("success")){
-					usernames.add(userName);									//将用户名保存在usernames中
+				if(new String(data).equals("failure")){
+					Toast.makeText(LoginActivity.this, "账号或密码错误", Toast.LENGTH_SHORT).show();
+				}else{ 
+					usernames.add(userName);												//将用户名保存在usernames中
 					Set<String> users = new HashSet<String>();
-					users.addAll(usernames);									//将usernames转化成集合Set
-					share.setStringSetValue(Configs.USERNAMES, users);			//将usernames保存在SharedPreferenced中
-					share.setBooleanValue(Configs.LOGIN_STATE, true);			//将登陆状态保存在SharedPreferenced中
+					users.addAll(usernames);												//将usernames转化成集合Set
+					share.setStringSetValue(Configs.USERNAMES, users);						//将usernames保存在SharedPreferenced中
+					share.setBooleanValue(Configs.LOGIN_STATE, true);						//将登陆状态保存在SharedPreferenced中
+					share.setStringValue(Configs.CURRENT_USER_ID, new String(data));		//将uid保存在SharedPreferenced中
 					share.setStringValue(Configs.CURRENT_USER, username.getText().toString());	//将当前用户名保存到SharedPreferenced中
-					
+					 
 					Intent intent = new Intent();
-					intent.putExtra("username", username.getText());			//传递用户名到MineFragment中
+					intent.putExtra("username", username.getText());						//传递用户名到MineFragment中
 					setResult(RESULT_OK, intent);
 					finish();
-				}else{
-					Toast.makeText(LoginActivity.this, "账号或密码错误", Toast.LENGTH_SHORT).show();
 				}
 			}
 			

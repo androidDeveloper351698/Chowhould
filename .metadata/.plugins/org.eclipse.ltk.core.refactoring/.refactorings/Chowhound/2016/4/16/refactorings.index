@@ -1,0 +1,4 @@
+1460434168818	Extract method 'clearShopCart'
+1460455316534	Rename field 'address'
+1460458428425	Rename field 'tv_activity_confirm_username'
+1460464032351	Extract method 'saveCurrentDeliveryAddress'

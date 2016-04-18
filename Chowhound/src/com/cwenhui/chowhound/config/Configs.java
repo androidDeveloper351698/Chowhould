@@ -21,6 +21,7 @@ public class Configs {
 	
 	public static final boolean DEVELOPER_MODE = false;
 	
+	public static final String CURRENT_USER_ID="currentUserId";			//当前登录用户的uid
 	public static final String CURRENT_USER="currentUser";				//当前登录用户的用户名
 	public static final String USERNAMES="usernames";					//用户使用过的用户名
 	public static final String LOGIN_STATE="loginState";				//当前的登录状态

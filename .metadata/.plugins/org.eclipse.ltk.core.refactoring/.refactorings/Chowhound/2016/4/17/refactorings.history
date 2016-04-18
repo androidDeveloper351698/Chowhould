@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Convert local variable &apos;com.cwenhui.chowhound.fragment.OrderFragment.refleshData().uid&apos; in &apos;com.cwenhui.chowhound.fragment.OrderFragment.refleshData()&apos; to field&#x0D;&#x0A;- Original project: &apos;Chowhound&apos;&#x0D;&#x0A;- Original element: &apos;com.cwenhui.chowhound.fragment.OrderFragment.refleshData().uid&apos;&#x0D;&#x0A;- Field name: &apos;uid&apos;&#x0D;&#x0A;- Initialize field in method&#x0D;&#x0A;- Declared visibility: &apos;private&apos;" description="Convert local variable &apos;uid&apos; to field" final="false" flags="2" id="org.eclipse.jdt.ui.promote.temp" initialize="1" input="/src&lt;com.cwenhui.chowhound.fragment{OrderFragment.java" name="uid" selection="5379 0" stamp="1460974877479" static="false" version="1.0" visibility="2"/>
+</session>

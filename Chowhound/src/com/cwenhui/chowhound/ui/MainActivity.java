@@ -13,7 +13,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.TranslateAnimation;
@@ -25,11 +24,8 @@ import android.widget.RelativeLayout;
 import com.cwenhui.chowhound.fragment.IndexFragment;
 import com.cwenhui.chowhound.fragment.MineFragment;
 import com.cwenhui.chowhound.fragment.OrderFragment;
-import com.cwenhui.chowhound.fragment.MenuFragment;
 import com.cwenhui.chowhound.utils.ListenNetStateService;
 import com.cwenhui.chowhound.utils.ListenNetStateService.MyBinder;
-import com.cwenhui.chowhound.widget.DepthPageTransformer;
-import com.cwenhui.chowhound.widget.LoadingDialog;
 import com.cwenhui.chowhound.widget.ZoomOutPageTransformer;
 import com.example.chowhound.R;
 
@@ -72,6 +68,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 					((ImageButton) mTabBtnOrder
 							.findViewById(R.id.ib_main_tab_bottom_portal_order))
 							.setImageResource(R.drawable.ddt_ic_img_radio_portal_order_check);
+					((OrderFragment)mFragments.get(position)).refleshData();		//根据是否切换账号，选择性刷新订单页面
 					break;
 				case 2:
 					((ImageButton) mTabBtnProfile

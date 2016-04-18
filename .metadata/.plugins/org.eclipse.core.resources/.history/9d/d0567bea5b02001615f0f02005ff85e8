@@ -1,0 +1,5 @@
+package com.cwenhui.chowhound.adapter;
+
+public class OrderFragmentAdapter extends CommonAdapter<T> {
+
+}
