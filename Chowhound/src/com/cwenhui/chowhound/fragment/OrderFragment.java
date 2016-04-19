@@ -22,7 +22,6 @@ import com.cwenhui.chowhound.bean.OrderFragmentBean;
 import com.cwenhui.chowhound.config.Configs;
 import com.cwenhui.chowhound.utils.HttpUtil;
 import com.cwenhui.chowhound.utils.SharedPreferencesHelper;
-import com.cwenhui.chowhound.widget.LoadingDialog;
 import com.example.chowhound.R;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
@@ -70,7 +69,7 @@ public class OrderFragment extends Fragment implements OnRefreshListener2<ListVi
 	}
 
 	private void getDataTask(String url, final int tag) {
-		LoadingDialog.showDialog(getActivity());		//加载数据时显示对话框
+//		LoadingDialog.showDialog(getActivity());		//加载数据时显示对话框
 		HttpUtil.get(url, new AsyncHttpResponseHandler() {
 
 			@Override
@@ -102,7 +101,7 @@ public class OrderFragment extends Fragment implements OnRefreshListener2<ListVi
 					}
 					adapter.notifyDataSetChanged();
 					mListView.onRefreshComplete();
-					LoadingDialog.dismissDialog();
+//					LoadingDialog.dismissDialog();
 					if(tag == PULL_UP){
 						PAGE++;
 					}

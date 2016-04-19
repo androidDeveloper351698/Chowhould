@@ -58,6 +58,6 @@
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="com.cwenhui.chowhound.fragment.OrderFragment"/>
 <fullyQualifiedTypeName name="com.cwenhui.chowhound.utils.SharedPreferencesHelper"/>
-<fullyQualifiedTypeName name="com.cwenhui.chowhound.config.Configs"/>
 <fullyQualifiedTypeName name="android.util.Log"/>
+<fullyQualifiedTypeName name="com.cwenhui.chowhound.config.Configs"/>
 </qualifiedTypeNameHistroy>

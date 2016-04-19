@@ -117,7 +117,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			}
 		};
 
-		mViewPager.setPageTransformer(true, new ZoomOutPageTransformer());
+//		mViewPager.setPageTransformer(true, new ZoomOutPageTransformer());
 		mViewPager.setAdapter(mAdapter);
 
 	}
