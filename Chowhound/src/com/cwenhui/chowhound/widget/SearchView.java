@@ -91,6 +91,9 @@ public class SearchView extends LinearLayout implements View.OnClickListener, On
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_search_delete:
+            	if (mListener != null) {
+            		mListener.onInput();
+            	}
                 input.setText("");
                 delete.setVisibility(GONE);
                 break;
