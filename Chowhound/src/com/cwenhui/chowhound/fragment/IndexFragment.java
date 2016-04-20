@@ -35,6 +35,7 @@ import com.cwenhui.chowhound.bean.IndexFragmentShop;
 import com.cwenhui.chowhound.config.Configs;
 import com.cwenhui.chowhound.ui.AddressActivity;
 import com.cwenhui.chowhound.ui.CaptureActivity;
+import com.cwenhui.chowhound.ui.SearchActivity;
 import com.cwenhui.chowhound.ui.ShopActivity;
 import com.cwenhui.chowhound.utils.GetDataTask;
 import com.cwenhui.chowhound.utils.SharedPreferencesHelper;
@@ -82,6 +83,7 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 	private ImageView scan; 									// 扫码
 	private LinearLayout selectAddress;	 							// 选址
 	private SharedPreferencesHelper share;
+	private LinearLayout search;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -100,9 +102,13 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 		scan = (ImageView) mView.findViewById(R.id.iv_fragment_index_scan);
 		deliveryAddress = (TextView) mView.findViewById(R.id.tv_fragment_index_delivery_address);
 		selectAddress = (LinearLayout) mView.findViewById(R.id.fragment_index_top_bar);
+		View headerInListview = LayoutInflater.from(getActivity())
+				.inflate(R.layout.fragment_main_index_listview_header, null);
+		search = (LinearLayout) headerInListview.findViewById(R.id.ll_fragment_main_index_search);
 		deliveryAddress.setText(share.getStringValue(Configs.CURRENT_DELIVERY_ADDRESS, "暂未设置收货地址"));
 		scan.setOnClickListener(this);
 		selectAddress.setOnClickListener(this);
+		search.setOnClickListener(this);
 
 		mPullRefreshListView = (PullToRefreshListView) mView.findViewById(R.id.pull_refresh_list_fragment_index);
 		mPullRefreshListView.setMode(Mode.BOTH); 								// 设置你需要刷新的模式,BOTH是下拉和上拉都可以
@@ -116,8 +122,7 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 
 		};
 		actualListView.setAdapter(adapter);
-		actualListView.addHeaderView(LayoutInflater.from(getActivity())
-				.inflate(R.layout.fragment_main_index_listview_header, null));
+		actualListView.addHeaderView(headerInListview);
 		actualListView.setOnScrollListener(this);
 		actualListView.setOnItemClickListener(this);
 
@@ -338,8 +343,12 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 
 		case R.id.fragment_index_top_bar:
 			intent = new Intent(getActivity(), AddressActivity.class);
-//			startActivity(intent);
 			startActivityForResult(intent, getActivity().RESULT_FIRST_USER);
+			break;
+		case R.id.ll_fragment_main_index_search:
+			intent = new Intent(getActivity(), SearchActivity.class);
+			startActivity(intent);
+			break;
 		default:
 			break;
 		}

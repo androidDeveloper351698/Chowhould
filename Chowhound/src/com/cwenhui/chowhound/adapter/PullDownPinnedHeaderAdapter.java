@@ -30,7 +30,6 @@ public class PullDownPinnedHeaderAdapter<T> extends BaseAdapter {
 	protected LayoutInflater mInflater;
 	private int itemLayoutId;							//getView 中使用，指定ViewHolder 中的ConvertView
 	private int headerLayoutId;
-//	public static LinkedList<String> URLS = new LinkedList<String>();	//item的图片url
 	private ImageLoader imageLoader = ImageLoader.getInstance();		//图片加载工具
 	private DisplayImageOptions options;								//显示图片的各种设置
 	private ImageFirstDisplayListener displayListener = new ImageFirstDisplayListener();
@@ -111,9 +110,6 @@ public class PullDownPinnedHeaderAdapter<T> extends BaseAdapter {
 				}
 			}
 			 
-//			Log.v(Tag, ((IndexFragmentShop)getItem(position-1)).getShopImg());
-//			holder.shopImage.setTag(((IndexFragmentShop)getItem(position-1)).getShopImg());
-//			showImageByAsyncTask(holder.shopImage, ((IndexFragmentShop)getItem(position-1)).getShopImg());	//留个接口用来加载item中的图片
 			holder.shopName.setText(((IndexFragmentShop)getItem(position-1)).getShopName());
 			holder.salesVolume.setText(String.valueOf(((IndexFragmentShop)getItem(position-1)).getSalesVolume()));
 			holder.arrivalTime.setText(((IndexFragmentShop)getItem(position-1)).getEarliestArrivalTime());
@@ -126,8 +122,6 @@ public class PullDownPinnedHeaderAdapter<T> extends BaseAdapter {
 			return convertView;
 		}
 	}
-	
-//	public abstract void showImageByAsyncTask(ImageView itemImage, String url);
 	
 	class ViewHolderItem{
 		ImageView shopImage;					//商店图像

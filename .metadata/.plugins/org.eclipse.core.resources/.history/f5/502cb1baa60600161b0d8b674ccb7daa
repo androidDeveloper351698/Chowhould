@@ -1,0 +1,27 @@
+package com.cwenhui.chowhound.adapter;
+
+import java.util.List;
+
+import android.content.Context;
+
+import com.cwenhui.chowhound.bean.SearchBean;
+import com.cwenhui.chowhound.utils.ViewHolder;
+import com.example.chowhound.R;
+
+
+public class SearchAdapter extends CommonAdapter<SearchBean>{
+
+    public SearchAdapter(Context context, List<SearchBean> data, int layoutId) {
+        super(context, data, layoutId);
+    }
+
+
+	@Override
+	public void convert(ViewHolder holder, SearchBean t) {
+		 holder.setImageResource(R.id.item_goods_img, t.getGoodsImg())
+         .setText(R.id.item_goods_name, t.getGoodsName())
+         .setText(R.id.item_price, t.getPrice())
+         .setText(R.id.item_sales_volume, t.getSalesVolume())
+         .setText(R.id.item_shop, t.getShop());
+	}
+}

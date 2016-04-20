@@ -1,1 +1,13 @@
 1460974877479	Convert local variable 'uid' to field
+1461117546801	Rename resource 'item_bean_list.xml'
+1461117777952	Rename type 'Bean'
+1461117821579	Delete element
+1461118317285	Rename field 'activity_search_results'
+1461118341443	Rename field 'activity_search_search_view'
+1461120870004	Rename field 'button'
+1461121267703	Rename field 'search_et_input'
+1461121277582	Rename field 'search_iv_delete'
+1461121299120	Rename field 'btn_layout_search_back'
+1461121314828	Rename field 'etInput'
+1461121321393	Rename field 'ivDelete'
+1461121327832	Rename field 'btnBack'

@@ -18,6 +18,7 @@
         android:paddingTop="10dp" >
 
         <LinearLayout
+            android:id="@+id/ll_fragment_main_index_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffff"

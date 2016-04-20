@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/x10">
+
+    <ImageView
+        android:id="@+id/item_goods_img"
+        android:layout_width="@dimen/x70"
+        android:layout_height="@dimen/x70"
+        android:src="@drawable/ddt_place_holder_brand_default" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x5"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_goods_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="双层牛肉堡" 
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/x5"
+            android:layout_marginBottom="@dimen/x5"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/item_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="19元"
+                android:textColor="@color/font_color_gray"
+                android:textSize="16sp" />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="@dimen/x15"
+                android:layout_marginLeft="@dimen/x5"
+                android:layout_marginRight="@dimen/x5"
+                android:background="@color/divider"/>
+
+            <TextView
+                android:id="@+id/item_sales_volume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="销量 29"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/item_shop"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="奇珍异宝汉堡店"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

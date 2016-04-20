@@ -103,6 +103,7 @@
         </activity>
         <activity android:name="com.cwenhui.chowhound.ui.OrderConfirmActivity"></activity>
         <activity android:name="com.cwenhui.chowhound.ui.OrderTakingActivity"></activity>
+        <activity android:name="com.cwenhui.chowhound.ui.SearchActivity"></activity>
         
         <activity
             android:name="com.mob.tools.MobUIShell"

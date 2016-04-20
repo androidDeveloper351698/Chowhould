@@ -1,0 +1,63 @@
+package com.cwenhui.chowhound.bean;
+
+/**
+ * bean 类
+ * Created by yetwish on 2015-05-11
+ */
+
+public class SearchBean {
+
+    private int goodsImg;
+    private String goodsName;
+    private String price;
+    private String salesVolume;
+    private String shop;
+
+    public SearchBean(int goodsImg, String goodsName, String content, String salesVolume, String shop) {
+        this.goodsImg = goodsImg;
+        this.goodsName = goodsName;
+        this.price = content;
+        this.salesVolume = salesVolume;
+        this.shop = shop;
+    }
+
+    public int getGoodsImg() {
+        return goodsImg;
+    }
+
+    public void setGoodsImg(int goodsImg) {
+        this.goodsImg = goodsImg;
+    }
+
+    public String getGoodsName() {
+        return goodsName;
+    }
+
+    public void setGoodsName(String goodsName) {
+        this.goodsName = goodsName;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getSalesVolume() {
+        return salesVolume;
+    }
+
+    public void setSalesVolume(String salesVolume) {
+        this.salesVolume = salesVolume;
+    }
+
+    public String getShop() {
+        return shop;
+    }
+
+    public void setShop(String shop) {
+        this.shop = shop;
+    }
+}

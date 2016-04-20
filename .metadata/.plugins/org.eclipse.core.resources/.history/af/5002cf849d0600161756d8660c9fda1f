@@ -1,0 +1,27 @@
+package com.cwenhui.chowhound.ui;
+
+import com.example.chowhound.R;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+public class SearchActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_search);
+		initData();
+		initView();
+	}
+
+	private void initData() {
+		
+	}
+
+	private void initView() {
+		
+	}
+	
+
+}
