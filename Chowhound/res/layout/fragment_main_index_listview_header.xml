@@ -60,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/gallery_fragment_main_order"
+            android:layout_alignBottom="@+id/gallery_fragment_main_order"
             android:layout_marginRight="5dp"
             android:layout_marginTop="-23px"
             android:background="#00000000"
