@@ -25,8 +25,8 @@
    
     <style name="fragment_main_index_shops_sales_rating_bar" parent="@android:style/Widget.RatingBar">
 		<item name="android:progressDrawable">@drawable/fragment_main_index_shops_sales_rating_bar</item>
-		<item name="android:minHeight">20px</item>
-		<item name="android:maxHeight">20px</item>
+		<item name="android:minHeight">@dimen/x15</item>
+		<item name="android:maxHeight">@dimen/x15</item>
 	</style>
 	
     <style name="fragment_comment_rating_bar" parent="@android:style/Widget.RatingBar">

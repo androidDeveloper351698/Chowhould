@@ -119,7 +119,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 //		mViewPager.setPageTransformer(true, new ZoomOutPageTransformer());
 		mViewPager.setAdapter(mAdapter);
-
+		mViewPager.setOffscreenPageLimit(4);
 	}
 
 	private void initView() {

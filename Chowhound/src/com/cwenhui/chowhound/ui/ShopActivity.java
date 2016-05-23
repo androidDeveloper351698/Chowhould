@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import com.cwenhui.chowhound.adapter.ShopTabAdapter;
@@ -17,7 +19,7 @@ import com.cwenhui.chowhound.fragment.ShopDetailFragment;
 import com.example.chowhound.R;
 import com.viewpagerindicator.TabPageIndicator;
 
-public class ShopActivity extends FragmentActivity {
+public class ShopActivity extends FragmentActivity implements OnClickListener{
 	private final String Tag = "ShopActivity";
 	private TextView shopName;
 	private ViewPager mViewPager;
@@ -57,6 +59,13 @@ public class ShopActivity extends FragmentActivity {
 		mTabPageIndicator = (TabPageIndicator) findViewById(R.id.indicator_activity_shop);
 		mViewPager.setAdapter(tabAdapter);
 		mTabPageIndicator.setViewPager(mViewPager, 0);
+		
+		shopName.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		finish();
 	}
 
 }

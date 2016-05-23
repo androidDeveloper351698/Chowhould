@@ -38,7 +38,6 @@
 <fullyQualifiedTypeName name="com.cwenhui.chowhound.ui.AddressActivity"/>
 <fullyQualifiedTypeName name="android.widget.AdapterView.OnItemClickListener"/>
 <fullyQualifiedTypeName name="com.cwenhui.chowhound.adapter.OrderFragmentAdapter"/>
-<fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
 <fullyQualifiedTypeName name="com.example.chowhound.R.id"/>
 <fullyQualifiedTypeName name="android.widget.Button"/>
 <fullyQualifiedTypeName name="android.widget.ImageButton"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="com.handmark.pulltorefresh.library.PullToRefreshListView"/>
 <fullyQualifiedTypeName name="com.handmark.pulltorefresh.library.PullToRefreshBase.Mode"/>
 <fullyQualifiedTypeName name="com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2"/>
+<fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
 </qualifiedTypeNameHistroy>
