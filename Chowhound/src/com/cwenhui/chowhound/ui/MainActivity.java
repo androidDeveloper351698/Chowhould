@@ -26,12 +26,13 @@ import com.cwenhui.chowhound.fragment.MineFragment;
 import com.cwenhui.chowhound.fragment.OrderFragment;
 import com.cwenhui.chowhound.utils.ListenNetStateService;
 import com.cwenhui.chowhound.utils.ListenNetStateService.MyBinder;
+import com.cwenhui.chowhound.widget.NoScrollViewPager;
 import com.cwenhui.chowhound.widget.ZoomOutPageTransformer;
 import com.example.chowhound.R;
 
 public class MainActivity extends FragmentActivity implements OnClickListener {
 	private final String Tag = "MainActivity";
-	private ViewPager mViewPager;
+	private NoScrollViewPager mViewPager;
 	private FragmentPagerAdapter mAdapter;
 	private List<Fragment> mFragments = new ArrayList<Fragment>();
 	private RelativeLayout bottomBar;
@@ -79,12 +80,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			}
 
 			@Override
-			public void onPageScrolled(int arg0, float arg1, int arg2) {
-			}
+			public void onPageScrolled(int arg0, float arg1, int arg2) { }
 
 			@Override
-			public void onPageScrollStateChanged(int arg0) {
-			}
+			public void onPageScrollStateChanged(int arg0) { }
 		});
 
 	}
@@ -112,12 +111,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 			@Override
 			public android.support.v4.app.Fragment getItem(int arg0) {
-//				Log.v(Tag, "------>"+mFragments.get(arg0));
 				return mFragments.get(arg0);
 			}
 		};
 
-//		mViewPager.setPageTransformer(true, new ZoomOutPageTransformer());
 		mViewPager.setAdapter(mAdapter);
 		mViewPager.setOffscreenPageLimit(4);
 	}
@@ -128,7 +125,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		mTabBtnProfile = (LinearLayout) findViewById(R.id.ll_main_tab_bottom_profile);
 		bottomBar = (RelativeLayout) findViewById(R.id.rl_main_tab_bottom);
 
-		mViewPager = (ViewPager) findViewById(R.id.activity_main_vp);
+		mViewPager = (NoScrollViewPager) findViewById(R.id.activity_main_vp);
 
 		networkError = (ImageView) findViewById(R.id.iv_activity_main_network_error);
 		connection = new ServiceConnection() {

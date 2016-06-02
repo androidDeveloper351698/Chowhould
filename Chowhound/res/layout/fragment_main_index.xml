@@ -24,7 +24,7 @@
         android:layout_below="@+id/fragment_index_top_bar" >
     </com.handmark.pulltorefresh.library.PullToRefreshListView>
 
-    <LinearLayout
+    <!-- <LinearLayout
         android:id="@+id/ll_fragment_main_order_shops_first_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -146,6 +146,84 @@
                 android:background="@drawable/ddt_near_tab_arrow" >
             </Spinner>
         </LinearLayout>
-    </LinearLayout>
+    </LinearLayout> -->
 
+    <LinearLayout
+        android:id="@+id/ll_fragment_main_order_shops_first_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_index_top_bar"
+        android:background="#F0F0F0"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="2dp" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="6dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/x5"
+                android:drawableRight="@drawable/ddt_near_tab_arrow"
+                android:text="全部分类" >
+            </TextView>
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="@dimen/x13"
+            android:background="@color/divider" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="6dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/x5"
+                android:drawableRight="@drawable/ddt_near_tab_arrow"
+                android:text="优惠活动" >
+            </TextView>
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="@dimen/x13"
+            android:background="@color/divider" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="6dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/x5"
+                android:drawableRight="@drawable/ddt_near_tab_arrow"
+                android:text="更多筛选" >
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>

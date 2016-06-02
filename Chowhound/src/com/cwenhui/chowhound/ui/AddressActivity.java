@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -122,6 +124,13 @@ public class AddressActivity extends Activity implements OnClickListener {
 			}
 		}, 1500);
 	}
+	
+	//为刷新当前位置按钮添加旋转动画
+	private void loadAnimationForRefleshPos() {
+		Animation animation = AnimationUtils.loadAnimation(this, R.anim.reflesh_current_pos);
+		refleshCurrentPos.startAnimation(animation);
+		
+	}
 
 	/**
 	 * 更新收货地址列表
@@ -171,6 +180,7 @@ public class AddressActivity extends Activity implements OnClickListener {
 			finish();
 			break;
 		case R.id.btn_activity_address_reflesh_address:
+			loadAnimationForRefleshPos();
 			getPois();
 			break;
 		default:

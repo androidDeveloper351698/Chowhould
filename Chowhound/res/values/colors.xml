@@ -9,4 +9,5 @@
     <color name="font_color_gray">#99000000</color>
     <color name="font_color_gray2">#50000000</color>
     <color name="fragment_bg">#40eeeeee</color>
+    <color name="quickaction_category_bg">#33aaaaaa</color>
 </resources>

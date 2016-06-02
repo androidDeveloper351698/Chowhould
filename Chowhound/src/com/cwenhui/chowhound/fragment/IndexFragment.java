@@ -3,14 +3,11 @@ package com.cwenhui.chowhound.fragment;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,7 +24,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cwenhui.chowhound.adapter.CommonAdapter;
-import com.cwenhui.chowhound.adapter.IndexFragmentGalleryImgAdapter;
 import com.cwenhui.chowhound.adapter.PullDownPinnedHeaderAdapter;
 import com.cwenhui.chowhound.bean.CommonBean;
 import com.cwenhui.chowhound.bean.IndexFragmentShop;
@@ -38,9 +34,8 @@ import com.cwenhui.chowhound.ui.SearchActivity;
 import com.cwenhui.chowhound.ui.ShopActivity;
 import com.cwenhui.chowhound.utils.GetDataTask;
 import com.cwenhui.chowhound.utils.SharedPreferencesHelper;
-//import com.cwenhui.chowhound.utils.ImageLoader;
 import com.cwenhui.chowhound.utils.ViewHolder;
-import com.cwenhui.chowhound.widget.GuideGallery;
+import com.cwenhui.chowhound.widget.CategoryQuickAction;
 import com.example.chowhound.R;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
@@ -67,21 +62,13 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 	private GridView mGridView; 								// 分类控件
 	private List<CommonBean> classifyData; 						// 分类数据
 
-	// 图片轮播
-	public boolean timeFlag = true;
-	public ImageTimerTask timeTask = null; 						// 时钟任务，每隔5秒图片轮播中的图片换一次
-	private Thread timeThread = null; 							// 时钟线程
-	int galleryposition = 0; 									// Gallery当前轮播的位置
-	public GuideGallery images_gallery; 						// 轮播控件
-	private int positon = 0; 									// 轮播时的点的位置
-	private boolean isExit = false;
-	Timer autoGallery = new Timer(); 							// Gallery的计时器
-
 	private TextView deliveryAddress;
 	private ImageView scan; 									// 扫码
-	private LinearLayout selectAddress;	 							// 选址
 	private SharedPreferencesHelper share;
 	private LinearLayout search;
+	
+	private LinearLayout llCategory;							
+	private CategoryQuickAction quickAction;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -99,14 +86,17 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 		// item中的各个控件
 		scan = (ImageView) mView.findViewById(R.id.iv_fragment_index_scan);
 		deliveryAddress = (TextView) mView.findViewById(R.id.tv_fragment_index_delivery_address);
-		selectAddress = (LinearLayout) mView.findViewById(R.id.fragment_index_top_bar);
 		View headerInListview = LayoutInflater.from(getActivity())
 				.inflate(R.layout.fragment_main_index_listview_header, null);
 		search = (LinearLayout) headerInListview.findViewById(R.id.ll_fragment_main_index_search);
 		deliveryAddress.setText(share.getStringValue(Configs.CURRENT_DELIVERY_ADDRESS, "暂未设置收货地址"));
 		scan.setOnClickListener(this);
-		selectAddress.setOnClickListener(this);
+		deliveryAddress.setOnClickListener(this);
 		search.setOnClickListener(this);
+		
+		llCategory = (LinearLayout) mView.findViewById(R.id.ll_fragment_main_order_shops_first_item);
+		llCategory.setOnClickListener(this);
+		quickAction = new CategoryQuickAction(getActivity());
 
 		mPullRefreshListView = (PullToRefreshListView) mView.findViewById(R.id.pull_refresh_list_fragment_index);
 		mPullRefreshListView.setMode(Mode.BOTH); 								// 设置你需要刷新的模式,BOTH是下拉和上拉都可以
@@ -116,9 +106,7 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 		adapter = new PullDownPinnedHeaderAdapter<IndexFragmentShop>(
 				getActivity(), mListItems,
 				R.layout.item_fragment_main_index_shops_others,
-				R.layout.item_fragment_main_index_shops_first) {
-
-		};
+				R.layout.item_fragment_main_index_shops_first);
 		actualListView.setAdapter(adapter);
 		actualListView.addHeaderView(headerInListview);
 		actualListView.setOnScrollListener(this);
@@ -142,49 +130,9 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 			}
 		});
 
-		images_gallery = (GuideGallery) mView
-				.findViewById(R.id.gallery_fragment_main_order);
-		images_gallery.setImageActivity(this); // 初始化GuideGallery
-		IndexFragmentGalleryImgAdapter imageAdapter = new IndexFragmentGalleryImgAdapter(
-				this);
-		images_gallery.setAdapter(imageAdapter); // 为 GuideGallery设置适配器
-		LinearLayout pointLinear = (LinearLayout) mView
-				.findViewById(R.id.ll_fragment_main_order_point_linear); // GuideGallery中的点
-		for (int i = 0; i < 2; i++) { // 2个点
-			ImageView pointView = new ImageView(getActivity());
-			if (i == 0) {
-				pointView.setBackgroundResource(R.drawable.feature_point_cur);
-			} else
-				pointView.setBackgroundResource(R.drawable.feature_point);
-			pointLinear.addView(pointView);
-		}
-
-		timeTask = new ImageTimerTask();
-		autoGallery.scheduleAtFixedRate(timeTask, 5000, 5000); // 每隔5秒图片轮播中的图片换一次
-		timeThread = new Thread() {
-			public void run() {
-				while (!isExit) {
-					try {
-						Thread.sleep(1500);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					synchronized (timeTask) {
-						if (!timeFlag) {
-							timeTask.timeCondition = true;
-							timeTask.notifyAll();
-						}
-					}
-					timeFlag = true;
-				}
-			};
-		};
-		timeThread.start();
-
 	}
 
 	private void initData() {
-//		LoadingDialog.setCancelable(false);
 		// 商店数据
 		mListItems = new LinkedList<IndexFragmentShop>();
 		new GetDataTask(this).getDatas(Configs.APIShopsByPage
@@ -213,74 +161,6 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 		classifyData.add(bean);
 	}
 
-	// 改变点的位置
-	public void changePointView(int cur) {
-		LinearLayout pointLinear = (LinearLayout) mView.findViewById(R.id.ll_fragment_main_order_point_linear);
-		View view = pointLinear.getChildAt(positon);
-		View curView = pointLinear.getChildAt(cur);
-		if (view != null && curView != null) {
-			ImageView pointView = (ImageView) view;
-			ImageView curPointView = (ImageView) curView;
-			pointView.setBackgroundResource(R.drawable.feature_point);
-			curPointView.setBackgroundResource(R.drawable.feature_point_cur);
-			positon = cur;
-		}
-
-	}
-
-	final Handler autoGalleryHandler = new Handler() { // 接收消息，改变GuideGallery的图像
-		public void handleMessage(Message message) {
-			super.handleMessage(message);
-			switch (message.what) {
-			case 1:
-				images_gallery.setSelection(message.getData().getInt("pos"));
-				break;
-			}
-		}
-	};
-
-	// 时钟任务，设置GuideGallery 的galleryposition(图像位置)，然后通过发送消息来通知改变图像位置，实现轮播效果
-	public class ImageTimerTask extends TimerTask {
-		public volatile boolean timeCondition = true;
-
-		public void run() {
-			synchronized (this) {
-				while (!timeCondition) {
-					try {
-						Thread.sleep(100);
-						wait();
-					} catch (InterruptedException e) {
-						Thread.interrupted();
-					}
-				}
-			}
-			try {
-				galleryposition = images_gallery.getSelectedItemPosition() + 1;
-				System.out.println(galleryposition + "");
-				Message msg = new Message();
-				Bundle date = new Bundle();// 存放数据
-				date.putInt("pos", galleryposition); // 存放改变后的位置
-				msg.setData(date);
-				msg.what = 1;// 消息标识
-				autoGalleryHandler.sendMessage(msg);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	@Override
-	public void onResume() {
-		super.onResume();
-		timeFlag = false;
-	}
-
-	@Override
-	public void onPause() {
-		super.onPause();
-		timeTask.timeCondition = false;
-	}
-	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
@@ -299,11 +179,9 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 	public void onScroll(AbsListView view, int firstVisibleItem,
 			int visibleItemCount, int totalItemCount) {
 		if (firstVisibleItem > 1) {
-			mView.findViewById(R.id.ll_fragment_main_order_shops_first_item)
-					.setVisibility(View.VISIBLE);
+			llCategory.setVisibility(View.VISIBLE);
 		} else {
-			mView.findViewById(R.id.ll_fragment_main_order_shops_first_item)
-					.setVisibility(View.GONE);
+			llCategory.setVisibility(View.GONE);
 		}
 
 	}
@@ -320,6 +198,10 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
+		if(position == 2){
+			mPullRefreshListView.getRefreshableView().setSelection(2);
+			quickAction.show(mView.findViewById(R.id.fragment_index_top_bar));
+		}
 		if (position != 2) {
 			Intent intent = new Intent(getActivity(), ShopActivity.class);
 			// 此时position需要减3才对的上mListItems中的数据,因为listview前面几个item用来充当头部了
@@ -339,13 +221,16 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 			startActivity(intent);
 			break;
 
-		case R.id.fragment_index_top_bar:
+		case R.id.tv_fragment_index_delivery_address:
 			intent = new Intent(getActivity(), AddressActivity.class);
 			startActivityForResult(intent, getActivity().RESULT_FIRST_USER);
 			break;
 		case R.id.ll_fragment_main_index_search:
 			intent = new Intent(getActivity(), SearchActivity.class);
 			startActivity(intent);
+			break;
+		case R.id.ll_fragment_main_order_shops_first_item:
+			quickAction.show(mView.findViewById(R.id.fragment_index_top_bar));
 			break;
 		default:
 			break;

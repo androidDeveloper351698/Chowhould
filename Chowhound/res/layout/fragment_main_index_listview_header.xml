@@ -45,15 +45,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/rl_fragment_main_order_search" >
 
-        <com.cwenhui.chowhound.widget.GuideGallery
-            android:id="@+id/gallery_fragment_main_order"
-            android:layout_width="match_parent"
+        <!-- 主题图片 -->
+        <com.cwenhui.chowhound.widget.SlideShowView
+            android:id="@+id/slideshowView"
+            android:layout_width="fill_parent"
             android:layout_height="70dp"
-            android:layout_centerHorizontal="true"
-            android:fadingEdge="none"
-            android:spacing="1dip"
-            android:unselectedAlpha="1" >
-        </com.cwenhui.chowhound.widget.GuideGallery>
+            android:layout_centerHorizontal="true" />
 
         <LinearLayout
             android:id="@+id/ll_fragment_main_order_point_linear"
@@ -73,17 +70,18 @@
         android:id="@+id/rl_fragment_main_order_classify"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:layout_below="@+id/rl_fragment_main_order_gallery" >
 
         <GridView
             android:id="@+id/gv_fragment_main_order_classify"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="@dimen/y120"
             android:layout_marginBottom="15dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="15dp"
-            android:background="@color/transparent"
+            android:background="@color/white"
             android:listSelector="@color/transparent"
             android:gravity="center"
             android:horizontalSpacing="28dp"

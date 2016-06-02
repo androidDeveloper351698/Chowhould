@@ -11,11 +11,6 @@
 	    
 	</com.cwenhui.chowhound.widget.SearchView>
 
-	<!-- <ListView
-	    android:id="@+id/lv_activity_search_results"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content" >
-	</ListView> -->
 	<com.handmark.pulltorefresh.library.PullToRefreshListView 
 	    android:id="@+id/lv_activity_search_results"
 	    android:layout_width="match_parent"

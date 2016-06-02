@@ -48,7 +48,7 @@
         <LinearLayout
             android:id="@+id/LinearLayout1"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/y50"
+            android:layout_height="@dimen/x40"
             android:background="@color/white"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -57,10 +57,10 @@
             <Button
                 android:id="@+id/btn_activity_mobile_location_back"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@color/transparent"
                 android:drawableLeft="@drawable/top_bar2_arrow_back"
-                android:text="     "/>
+                android:drawablePadding="@dimen/x13"/>
 
             <EditText
                     android:id="@+id/activity_mobile_location_search_address"

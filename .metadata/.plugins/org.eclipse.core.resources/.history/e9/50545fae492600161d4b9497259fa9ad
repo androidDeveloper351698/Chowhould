@@ -1,0 +1,5 @@
+package com.cwenhui.chowhound.widget;
+
+public class CategoryQuickAction extends CustomQuickAction<T> {
+
+}

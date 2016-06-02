@@ -5,29 +5,16 @@
     android:background="#F0F0F0"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/ll_activity_address_input_address"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/x10"
         android:background="#ffffff"
+        android:drawableLeft="@drawable/ddt_head_search_icon"
+        android:drawablePadding="@dimen/x5"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="6dp" >
-
-        <ImageView
-            android:id="@+id/iv_activity_address_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/x5"
-            android:src="@drawable/ddt_head_search_icon" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="请输入地址" />
-    </LinearLayout>
+        android:padding="6dp"
+        android:text="请输入地址" />
 
     <View
         android:layout_width="match_parent"
@@ -65,8 +52,7 @@
             android:id="@+id/btn_activity_address_reflesh_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-			android:background="@drawable/activity_address_reflesh" />
-
+            android:background="@drawable/activity_address_reflesh" />
     </LinearLayout>
 
     <View

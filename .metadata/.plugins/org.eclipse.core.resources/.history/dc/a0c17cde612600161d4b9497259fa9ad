@@ -1,0 +1,7 @@
+package com.cwenhui.chowhound.widget;
+
+import android.widget.PopupWindow;
+
+public class CategoryQuickAction extends PopupWindow {
+
+}

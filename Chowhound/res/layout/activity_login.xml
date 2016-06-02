@@ -15,7 +15,7 @@
         <Button
             android:id="@+id/btn_activity_login_back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/transparent"
             android:drawableLeft="@drawable/top_bar2_arrow_back"
             android:text="吃货账户登录"
@@ -30,7 +30,7 @@
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/transparent"
             android:text="帮助"
             android:textColor="@color/font_color_gray"

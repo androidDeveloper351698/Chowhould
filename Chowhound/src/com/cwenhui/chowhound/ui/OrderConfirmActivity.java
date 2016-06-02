@@ -82,6 +82,7 @@ public class OrderConfirmActivity extends Activity implements OnClickListener{
 		submit = (Button) findViewById(R.id.btn_activity_order_confirm_submit);
 		selectAddress = (LinearLayout) findViewById(R.id.ll_order_confirm_select_address);
 		deliveryAddress = (RelativeLayout) findViewById(R.id.rl_activity_order_confirm_address);
+		Button back = (Button) findViewById(R.id.btn_activity_order_confirm_back);
 		
 		WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
 		Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.activity_order_confirm_line);
@@ -106,6 +107,7 @@ public class OrderConfirmActivity extends Activity implements OnClickListener{
 		selectAddress.setOnClickListener(this);
 		deliveryAddress.setOnClickListener(this);
 		submit.setOnClickListener(this);
+		back.setOnClickListener(this);
 	}
 	
 	/**
@@ -150,6 +152,10 @@ public class OrderConfirmActivity extends Activity implements OnClickListener{
 		switch (v.getId()) {
 		case R.id.btn_activity_order_confirm_submit:
 			submitOrder();
+			break;
+			
+		case R.id.btn_activity_order_confirm_back:
+			finish();
 			break;
 
 		case R.id.ll_order_confirm_select_address:

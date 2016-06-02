@@ -20,6 +20,9 @@ public class Configs {
 
 	public static final String APIShopUploadImg = "http://120.27.105.241:8080/spring-mvc-study/upload/";
 	
+	//图片缓存地址<i>("/Android/data/[app_package_name]/cache/dirName")</i>
+    public static final String IMAGE_PATH = "images";
+	
 	public static final boolean DEVELOPER_MODE = false;
 	
 	public static final String CURRENT_USER_ID="currentUserId";			//当前登录用户的uid

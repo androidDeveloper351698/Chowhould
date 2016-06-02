@@ -5,7 +5,6 @@ import java.util.List;
 
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
-import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -49,14 +48,14 @@ public abstract class CustomQuickAction<T> extends PopupWindow {
 	 * @param anchor
 	 */
 	public void show(View anchor) { 
-		Log.e(TAG, "show2:"+mItems.size());
+//		Log.e(TAG, "show2:"+mItems.size());
 		if (!isShowing()) {
 			Direction showDirection = computeDisplayPosition(anchor);			// 位置
 			int[] locations = preShow(anchor, showDirection);					// 根据位置，显示箭头
 			if (locations != null) {											// 显示PopupWindow
 				showAtLocation(anchor, Gravity.NO_GRAVITY, locations[0], locations[1]);
 			}
-			Log.e(TAG, "locations[0]"+locations[0]+"locations[1]"+locations[1]);
+//			Log.e(TAG, "locations[0]"+locations[0]+"locations[1]"+locations[1]);
 		} else {
 			dismiss();
 		}
@@ -129,7 +128,7 @@ public abstract class CustomQuickAction<T> extends PopupWindow {
 		boolean canShowRight = mAnchorLocations[0] + anchor.getWidth() + popupWidth < mScreenWidth;
 		boolean canShowLeft = mAnchorLocations[0] - popupWidth > 0;
 		
-		Log.e(TAG, "popupWidth"+popupWidth+"   popupHeight"+popupHeight);
+//		Log.e(TAG, "popupWidth"+popupWidth+"   popupHeight"+popupHeight);
 
 		if(canShowTop && canShowBottom){
 			if(mAnchorLocations[1] - popupHeight > (mScreenHeight-mAnchorLocations[1] - anchor.getHeight() - popupHeight)){
@@ -154,7 +153,7 @@ public abstract class CustomQuickAction<T> extends PopupWindow {
 				showDirection = Direction.LEFT;
 			}
 		}
-		Log.e(TAG, "showDirection:"+showDirection);
+//		Log.e(TAG, "showDirection:"+showDirection);
 		return showDirection;
 	}
 
