@@ -6,9 +6,10 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.cwenhui.chowhound.bean.SearchBean;
+import com.cwenhui.chowhound.common.CommonAdapter;
+import com.cwenhui.chowhound.common.ViewHolder;
 import com.cwenhui.chowhound.config.Configs;
 import com.cwenhui.chowhound.utils.ImageFirstDisplayListener;
-import com.cwenhui.chowhound.utils.ViewHolder;
 import com.example.chowhound.R;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;

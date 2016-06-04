@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 
-import com.cwenhui.chowhound.utils.DialogViewHolder;
+import com.cwenhui.chowhound.common.DialogViewHolder;
 
 public abstract class CustomDialog extends Dialog {
 	private Context mContext;

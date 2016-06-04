@@ -13,9 +13,9 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.cwenhui.chowhound.adapter.CommonAdapter;
 import com.cwenhui.chowhound.bean.GoodsBean;
-import com.cwenhui.chowhound.utils.ViewHolder;
+import com.cwenhui.chowhound.common.CommonAdapter;
+import com.cwenhui.chowhound.common.ViewHolder;
 import com.example.chowhound.R;
 
 public class ShopCartQuickAction2 extends CustomQuickAction<GoodsBean> {

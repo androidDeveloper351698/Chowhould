@@ -1,0 +1,5 @@
+package com.cwenhui.chowhound.utils;
+
+public class WindowUtil {
+
+}

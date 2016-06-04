@@ -1,0 +1,313 @@
+package com.cwenhui.chowhound.fragment;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.cwenhui.chowhound.adapter.PullDownPinnedHeaderAdapter;
+import com.cwenhui.chowhound.bean.CommonBean;
+import com.cwenhui.chowhound.bean.IndexFragmentShop;
+import com.cwenhui.chowhound.common.CommonAdapter;
+import com.cwenhui.chowhound.common.ViewHolder;
+import com.cwenhui.chowhound.config.Configs;
+import com.cwenhui.chowhound.ui.AddressActivity;
+import com.cwenhui.chowhound.ui.CaptureActivity;
+import com.cwenhui.chowhound.ui.SearchActivity;
+import com.cwenhui.chowhound.ui.ShopActivity;
+import com.cwenhui.chowhound.utils.HttpUtil;
+import com.cwenhui.chowhound.utils.SharedPreferencesHelper;
+import com.cwenhui.chowhound.utils.WindowUtil;
+import com.cwenhui.chowhound.widget.CategoryQuickAction;
+import com.cwenhui.chowhound.widget.LoadingDialog;
+import com.example.chowhound.R;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+
+public class IndexFragment extends Fragment implements OnScrollListener,
+		OnItemClickListener, OnClickListener, OnRefreshListener2<ListView> {
+	final String TAG = "IndexFragment";
+	private View mView;
+	static final int MENU_MANUAL_REFRESH = 0;
+	static final int MENU_DISABLE_SCROLL = 1;
+	static final int MENU_SET_MODE = 2;
+	static final int MENU_DEMO = 3;
+	private static final int INIT = 0;
+	public static final int PULL_DOWN = 1;
+	public static final int PULL_UP = 2;
+	public int PAGE = 2; 										// 默认第2页,初始化数据时已加载了第一页的数据
+	private int PAGE_SIZE = 5; 									// 设置每次加载5条数据
+	// 详细分类列表(上拉加载下拉刷新)
+	public LinkedList<IndexFragmentShop> mListItems;
+	public PullToRefreshListView mPullRefreshListView;
+	public PullDownPinnedHeaderAdapter adapter;
+	private GridView mGridView; 								// 分类控件
+	private List<CommonBean> classifyData; 						// 分类数据
+
+	private TextView deliveryAddress;
+	private ImageView scan; 									// 扫码
+	private SharedPreferencesHelper share;
+	private LinearLayout search;
+	
+	private LinearLayout llCategory;							
+	private CategoryQuickAction quickAction;
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		mView = inflater.inflate(R.layout.fragment_main_index, container, false);
+
+		initData();
+		initView();
+
+		return mView;
+	}
+
+	private void initView() {
+		share = SharedPreferencesHelper.getInstance(getActivity());
+		// item中的各个控件
+		scan = (ImageView) mView.findViewById(R.id.iv_fragment_index_scan);
+		deliveryAddress = (TextView) mView.findViewById(R.id.tv_fragment_index_delivery_address);
+		View headerInListview = LayoutInflater.from(getActivity())
+				.inflate(R.layout.fragment_main_index_listview_header, null);
+		search = (LinearLayout) headerInListview.findViewById(R.id.ll_fragment_main_index_search);
+		deliveryAddress.setText(share.getStringValue(Configs.CURRENT_DELIVERY_ADDRESS, "暂未设置收货地址"));
+		scan.setOnClickListener(this);
+		deliveryAddress.setOnClickListener(this);
+		search.setOnClickListener(this);
+		
+		llCategory = (LinearLayout) mView.findViewById(R.id.ll_fragment_main_order_shops_first_item);
+		llCategory.setOnClickListener(this);
+		quickAction = new CategoryQuickAction(getActivity());
+		quickAction.setOnDismissListener(new OnDismissListener() {
+			
+			@Override
+			public void onDismiss() {
+				WindowUtil.setBackgroundAlpha(getActivity(), 1f);
+			}
+		});
+
+		mPullRefreshListView = (PullToRefreshListView) mView.findViewById(R.id.pull_refresh_list_fragment_index);
+		mPullRefreshListView.setMode(Mode.BOTH); 								// 设置你需要刷新的模式,BOTH是下拉和上拉都可以
+		mPullRefreshListView.setOnRefreshListener(this);						// 设置上拉下拉刷新监听
+		ListView actualListView = mPullRefreshListView.getRefreshableView();
+
+		adapter = new PullDownPinnedHeaderAdapter<IndexFragmentShop>(
+				getActivity(), mListItems,
+				R.layout.item_fragment_main_index_shops_others,
+				R.layout.item_fragment_main_index_shops_first);
+		actualListView.setAdapter(adapter);
+		actualListView.addHeaderView(headerInListview);
+		actualListView.setOnScrollListener(this);
+		actualListView.setOnItemClickListener(this);
+
+		// 分类视图
+		mGridView = (GridView) mView
+				.findViewById(R.id.gv_fragment_main_order_classify);
+		// 为分类 GridView 配置适配器
+		mGridView.setAdapter(new CommonAdapter<CommonBean>(getActivity()
+				.getApplicationContext(), classifyData,
+				R.layout.item_fragment_main_index_classify) {
+
+			@Override
+			public void convert(ViewHolder holder, CommonBean t) {
+				holder.setImageResource(
+						R.id.iv_item_fragment_main_index_classify,
+						t.getResource());
+				holder.setText(R.id.tv_item_fragment_main_index_classify,
+						t.getText());
+			}
+		});
+
+	}
+
+	private void initData() {
+		// 商店数据
+		mListItems = new LinkedList<IndexFragmentShop>();
+		getDatas(Configs.APIShopsByPage
+				+ "pageNo=1&pageSize=5", INIT);
+
+		// 分类数据
+		classifyData = new ArrayList<CommonBean>();
+		CommonBean bean;
+		bean = new CommonBean("美食外卖", R.drawable.img_fragment_main_index_waimai);
+		classifyData.add(bean);
+		bean = new CommonBean("甜点饮品", R.drawable.img_fragment_main_index_yinpin);
+		classifyData.add(bean);
+		bean = new CommonBean("果蔬生鲜", R.drawable.img_fragment_main_index_guoshu);
+		classifyData.add(bean);
+		bean = new CommonBean("超市便利", R.drawable.img_fragment_main_index_market);
+		classifyData.add(bean);
+		bean = new CommonBean("鲜花速递", R.drawable.img_fragment_main_index_flower);
+		classifyData.add(bean);
+		bean = new CommonBean("品质好店",
+				R.drawable.img_fragment_main_index_good_shop);
+		classifyData.add(bean);
+		bean = new CommonBean("品质正餐", R.drawable.img_fragment_main_index_dinner);
+		classifyData.add(bean);
+		bean = new CommonBean("全部分类",
+				R.drawable.img_fragment_main_index_classify_all);
+		classifyData.add(bean);
+	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		deliveryAddress.setText(share.getStringValue(Configs.CURRENT_DELIVERY_ADDRESS, "暂未设置收货地址"));
+	}
+
+	/*
+	 * firstVisibleItem:表示在现时屏幕第一个ListItem(部分显示的ListItem也算)在整个ListView的位置
+	 * (下标从0开始) visibleItemCount:表示在现时屏幕可以见到的ListItem(部分显示的ListItem也算)总数
+	 * totalItemCount:表示ListView的ListItem总数 listView.getFirstVisiblePosition
+	 * ()表示在现时屏幕第一个ListItem(第一个ListItem部分显示也算)在整个ListView的位置(下标从0开始) listView
+	 * .getLastVisiblePosition()表示在现时屏幕最后一个ListItem(最后ListItem要完全显示出来才算
+	 * )在整个ListView的位置(下标从0开始)
+	 */
+	@Override
+	public void onScroll(AbsListView view, int firstVisibleItem,
+			int visibleItemCount, int totalItemCount) {
+		if (firstVisibleItem > 1) {
+			llCategory.setVisibility(View.VISIBLE);
+		} else {
+			llCategory.setVisibility(View.GONE);
+		}
+
+	}
+
+	/*
+	 * scrollState值： 当屏幕停止滚动时为SCROLL_STATE_IDLE = 0；
+	 * 当屏幕滚动且用户使用的触碰或手指还在屏幕上时为SCROLL_STATE_TOUCH_SCROLL = 1；
+	 * 由于用户的操作，屏幕产生惯性滑动时为SCROLL_STATE_FLING = 2
+	 */
+	@Override
+	public void onScrollStateChanged(AbsListView view, int scrollState) {
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		if(position == 2){
+			mPullRefreshListView.getRefreshableView().setSelection(2);
+			quickAction.show(mView.findViewById(R.id.fragment_index_top_bar));
+			mPullRefreshListView.getBackground().setAlpha(80);
+		}
+		if (position != 2) {
+			Intent intent = new Intent(getActivity(), ShopActivity.class);
+			// 此时position需要减3才对的上mListItems中的数据,因为listview前面几个item用来充当头部了
+			intent.putExtra("shopId", mListItems.get(position - 3).getShopId());
+			intent.putExtra("shopName", mListItems.get(position - 3).getShopName());
+			startActivity(intent);
+		}
+
+	}
+
+	@Override
+	public void onClick(View v) {
+		Intent intent = null;
+		switch (v.getId()) {
+		case R.id.iv_fragment_index_scan:
+			intent = new Intent(getActivity(), CaptureActivity.class);
+			startActivity(intent);
+			break;
+
+		case R.id.tv_fragment_index_delivery_address:
+			intent = new Intent(getActivity(), AddressActivity.class);
+			startActivityForResult(intent, getActivity().RESULT_FIRST_USER);
+			break;
+		case R.id.ll_fragment_main_index_search:
+			intent = new Intent(getActivity(), SearchActivity.class);
+			startActivity(intent);
+			break;
+		case R.id.ll_fragment_main_order_shops_first_item:
+			quickAction.show(mView.findViewById(R.id.fragment_index_top_bar));
+			break;
+		default:
+			break;
+		}
+
+	}
+
+	@Override
+	public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+		Toast.makeText(getActivity(), "Pull Down!",Toast.LENGTH_SHORT).show();
+		getDatas(Configs.APIShopsByPage + "pageNo=1&pageSize="+ PAGE_SIZE, PULL_DOWN);
+	}
+
+	@Override
+	public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+		Toast.makeText(getActivity(), "Pull Up!",Toast.LENGTH_SHORT).show();
+		getDatas(Configs.APIShopsByPage + "pageNo=" + PAGE+ "&pageSize=" + PAGE_SIZE, PULL_UP);
+	}
+	
+	private void getDatas(String url, final int tag){
+		LoadingDialog.showDialog(getActivity());		//加载数据时显示对话框
+		HttpUtil.get(url, new AsyncHttpResponseHandler() {
+
+			@Override
+			public void onFailure(int arg0, Header[] arg1, byte[] data,
+					Throwable throwable) {
+				Log.v(TAG, "throwable:  " + throwable.toString());
+				
+			}
+
+			@Override
+			public void onSuccess(int arg0, Header[] arg1, byte[] data) {
+				IndexFragmentShop fragmentShop = null;
+				try {
+					JSONArray array = new JSONArray(new String(data));
+					if (tag == IndexFragment.PULL_DOWN) { // 如果是下拉刷新，则先清除搜游数据，然后重新加载
+						mListItems.clear();
+						PAGE = 2;
+					}
+					for (int i = 0; i < array.length(); i++) { // 加载数据
+						fragmentShop = new IndexFragmentShop(
+								Configs.APITestForImg, "程序猿烧饼店", 123456,
+								"18:00", "免配送费", i, 0, "none");
+						fragmentShop.setShopId(array.getJSONObject(i).getInt("shopId"));
+						fragmentShop.setShopName(array.getJSONObject(i)
+								.getString("shopName"));
+						fragmentShop.setShopImg(array.getJSONObject(i).getString("imgPath"));
+						mListItems.add(fragmentShop);
+					}
+					adapter.notifyDataSetChanged();
+					mPullRefreshListView.onRefreshComplete();
+					LoadingDialog.dismissDialog();
+					if (tag == IndexFragment.PULL_UP)
+						PAGE++; // 上拉后,页数要增加1
+
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		});
+	}
+	
+}

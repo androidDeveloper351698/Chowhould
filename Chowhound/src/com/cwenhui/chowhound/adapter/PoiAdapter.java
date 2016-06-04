@@ -12,7 +12,8 @@ import android.widget.TextView;
 
 import com.baidu.mapapi.search.core.PoiInfo;
 import com.cwenhui.chowhound.bean.AddressBean;
-import com.cwenhui.chowhound.utils.ViewHolder;
+import com.cwenhui.chowhound.common.CommonAdapter;
+import com.cwenhui.chowhound.common.ViewHolder;
 import com.example.chowhound.R;
 
 public class PoiAdapter extends CommonAdapter<PoiInfo> {

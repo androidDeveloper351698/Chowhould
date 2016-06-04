@@ -5,7 +5,8 @@ import java.util.List;
 import android.content.Context;
 
 import com.cwenhui.chowhound.bean.GoodsBean;
-import com.cwenhui.chowhound.utils.ViewHolder;
+import com.cwenhui.chowhound.common.CommonAdapter;
+import com.cwenhui.chowhound.common.ViewHolder;
 import com.example.chowhound.R;
 
 public class OrderConfirmAdapter extends CommonAdapter<GoodsBean> {

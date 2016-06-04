@@ -1,2 +1,7 @@
 1464871769341	Rename local variable 'bean'
 1464881143101	Rename local variable 'listView'
+1464957765166	Delete element
+1465018632106	Move compilation unit
+1465018699188	Move compilation units
+1465019604679	Rename type 'Subcatalog'
+1465025099207	Rename field 'tv_item_fragment_index_parent_category'

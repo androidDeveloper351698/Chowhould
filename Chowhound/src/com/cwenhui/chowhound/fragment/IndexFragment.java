@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,30 +24,34 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cwenhui.chowhound.adapter.CommonAdapter;
 import com.cwenhui.chowhound.adapter.PullDownPinnedHeaderAdapter;
 import com.cwenhui.chowhound.bean.CommonBean;
 import com.cwenhui.chowhound.bean.IndexFragmentShop;
+import com.cwenhui.chowhound.common.CommonAdapter;
+import com.cwenhui.chowhound.common.ViewHolder;
 import com.cwenhui.chowhound.config.Configs;
 import com.cwenhui.chowhound.ui.AddressActivity;
 import com.cwenhui.chowhound.ui.CaptureActivity;
 import com.cwenhui.chowhound.ui.SearchActivity;
 import com.cwenhui.chowhound.ui.ShopActivity;
-import com.cwenhui.chowhound.utils.GetDataTask;
+import com.cwenhui.chowhound.utils.HttpUtil;
 import com.cwenhui.chowhound.utils.SharedPreferencesHelper;
-import com.cwenhui.chowhound.utils.ViewHolder;
+import com.cwenhui.chowhound.utils.WindowUtil;
 import com.cwenhui.chowhound.widget.CategoryQuickAction;
+import com.cwenhui.chowhound.widget.LoadingDialog;
 import com.example.chowhound.R;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 
 public class IndexFragment extends Fragment implements OnScrollListener,
-		OnItemClickListener, OnClickListener, OnRefreshListener2<ListView> {
+		OnItemClickListener, OnClickListener, OnRefreshListener2<ListView>, OnDismissListener {
 	final String TAG = "IndexFragment";
 	private View mView;
 	static final int MENU_MANUAL_REFRESH = 0;
@@ -96,7 +104,9 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 		
 		llCategory = (LinearLayout) mView.findViewById(R.id.ll_fragment_main_order_shops_first_item);
 		llCategory.setOnClickListener(this);
+		
 		quickAction = new CategoryQuickAction(getActivity());
+		quickAction.setOnDismissListener(this);
 
 		mPullRefreshListView = (PullToRefreshListView) mView.findViewById(R.id.pull_refresh_list_fragment_index);
 		mPullRefreshListView.setMode(Mode.BOTH); 								// 设置你需要刷新的模式,BOTH是下拉和上拉都可以
@@ -135,7 +145,7 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 	private void initData() {
 		// 商店数据
 		mListItems = new LinkedList<IndexFragmentShop>();
-		new GetDataTask(this).getDatas(Configs.APIShopsByPage
+		getDatas(Configs.APIShopsByPage
 				+ "pageNo=1&pageSize=5", INIT);
 
 		// 分类数据
@@ -241,13 +251,62 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 	@Override
 	public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
 		Toast.makeText(getActivity(), "Pull Down!",Toast.LENGTH_SHORT).show();
-		new GetDataTask(IndexFragment.this).getDatas(Configs.APIShopsByPage + "pageNo=1&pageSize="+ PAGE_SIZE, PULL_DOWN);
+		getDatas(Configs.APIShopsByPage + "pageNo=1&pageSize="+ PAGE_SIZE, PULL_DOWN);
 	}
 
 	@Override
 	public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
 		Toast.makeText(getActivity(), "Pull Up!",Toast.LENGTH_SHORT).show();
-		new GetDataTask(IndexFragment.this).getDatas(Configs.APIShopsByPage + "pageNo=" + PAGE+ "&pageSize=" + PAGE_SIZE, PULL_UP);
+		getDatas(Configs.APIShopsByPage + "pageNo=" + PAGE+ "&pageSize=" + PAGE_SIZE, PULL_UP);
+	}
+	
+	private void getDatas(String url, final int tag){
+		LoadingDialog.showDialog(getActivity());		//加载数据时显示对话框
+		HttpUtil.get(url, new AsyncHttpResponseHandler() {
+
+			@Override
+			public void onFailure(int arg0, Header[] arg1, byte[] data,
+					Throwable throwable) {
+				Log.v(TAG, "throwable:  " + throwable.toString());
+				
+			}
+
+			@Override
+			public void onSuccess(int arg0, Header[] arg1, byte[] data) {
+				IndexFragmentShop fragmentShop = null;
+				try {
+					JSONArray array = new JSONArray(new String(data));
+					if (tag == IndexFragment.PULL_DOWN) { // 如果是下拉刷新，则先清除搜游数据，然后重新加载
+						mListItems.clear();
+						PAGE = 2;
+					}
+					for (int i = 0; i < array.length(); i++) { // 加载数据
+						fragmentShop = new IndexFragmentShop(
+								Configs.APITestForImg, "程序猿烧饼店", 123456,
+								"18:00", "免配送费", i, 0, "none");
+						fragmentShop.setShopId(array.getJSONObject(i).getInt("shopId"));
+						fragmentShop.setShopName(array.getJSONObject(i)
+								.getString("shopName"));
+						fragmentShop.setShopImg(array.getJSONObject(i).getString("imgPath"));
+						mListItems.add(fragmentShop);
+					}
+					adapter.notifyDataSetChanged();
+					mPullRefreshListView.onRefreshComplete();
+					LoadingDialog.dismissDialog();
+					if (tag == IndexFragment.PULL_UP)
+						PAGE++; // 上拉后,页数要增加1
+
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		});
 	}
 
+	@Override
+	public void onDismiss() {
+		WindowUtil.setBackgroundAlpha(getActivity(), 1f);
+	}
+	
 }

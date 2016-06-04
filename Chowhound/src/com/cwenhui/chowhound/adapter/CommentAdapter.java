@@ -6,7 +6,8 @@ import android.content.Context;
 import android.widget.RatingBar;
 
 import com.cwenhui.chowhound.bean.CommentFragmentBean;
-import com.cwenhui.chowhound.utils.ViewHolder;
+import com.cwenhui.chowhound.common.CommonAdapter;
+import com.cwenhui.chowhound.common.ViewHolder;
 import com.example.chowhound.R;
 
 public class CommentAdapter extends CommonAdapter<CommentFragmentBean> {

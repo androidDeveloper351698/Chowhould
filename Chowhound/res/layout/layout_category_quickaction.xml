@@ -92,7 +92,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:divider="@color/transparent" >
+            android:divider="@color/transparent"
+            android:listSelector="@drawable/click_state_bg" >
         </ListView>
 
         <ListView
@@ -101,7 +102,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/white"
-            android:divider="@color/transparent" >
+            android:divider="@color/transparent"
+            android:listSelector="@drawable/click_state_bg" >
         </ListView>
     </LinearLayout>
 

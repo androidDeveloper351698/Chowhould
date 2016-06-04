@@ -1,0 +1,7 @@
+package com.cwenhui.chowhound.adapter;
+
+import com.cwenhui.chowhound.common.CommonAdapter;
+
+public class Subcatalog extends CommonAdapter<T> {
+
+}

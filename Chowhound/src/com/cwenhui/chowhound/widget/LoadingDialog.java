@@ -8,9 +8,9 @@ import android.util.Log;
 import android.view.WindowManager.BadTokenException;
 import android.widget.ImageView;
 
+import com.cwenhui.chowhound.common.DialogViewHolder;
 import com.cwenhui.chowhound.ui.LoginActivity;
 import com.cwenhui.chowhound.ui.MainActivity;
-import com.cwenhui.chowhound.utils.DialogViewHolder;
 import com.example.chowhound.R;
 
 public class LoadingDialog {

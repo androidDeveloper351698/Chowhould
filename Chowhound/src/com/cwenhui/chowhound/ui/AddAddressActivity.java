@@ -7,8 +7,8 @@ import java.util.regex.Pattern;
 
 import com.baidu.mapapi.search.core.PoiInfo;
 import com.cwenhui.chowhound.bean.DeliveryAddress;
+import com.cwenhui.chowhound.common.DialogViewHolder;
 import com.cwenhui.chowhound.utils.DBManager;
-import com.cwenhui.chowhound.utils.DialogViewHolder;
 import com.cwenhui.chowhound.widget.CustomDialog;
 import com.example.chowhound.R;
 
