@@ -51,7 +51,8 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
 public class IndexFragment extends Fragment implements OnScrollListener,
-		OnItemClickListener, OnClickListener, OnRefreshListener2<ListView>, OnDismissListener {
+		OnItemClickListener, OnClickListener, OnRefreshListener2<ListView>,
+		OnDismissListener {
 	final String TAG = "IndexFragment";
 	private View mView;
 	static final int MENU_MANUAL_REFRESH = 0;
@@ -61,27 +62,28 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 	private static final int INIT = 0;
 	public static final int PULL_DOWN = 1;
 	public static final int PULL_UP = 2;
-	public int PAGE = 2; 										// 默认第2页,初始化数据时已加载了第一页的数据
-	private int PAGE_SIZE = 5; 									// 设置每次加载5条数据
+	public int PAGE = 2; // 默认第2页,初始化数据时已加载了第一页的数据
+	private int PAGE_SIZE = 5; // 设置每次加载5条数据
 	// 详细分类列表(上拉加载下拉刷新)
 	public LinkedList<IndexFragmentShop> mListItems;
 	public PullToRefreshListView mPullRefreshListView;
 	public PullDownPinnedHeaderAdapter adapter;
-	private GridView mGridView; 								// 分类控件
-	private List<CommonBean> classifyData; 						// 分类数据
+	private GridView mGridView; // 分类控件
+	private List<CommonBean> classifyData; // 分类数据
 
 	private TextView deliveryAddress;
-	private ImageView scan; 									// 扫码
+	private ImageView scan; // 扫码
 	private SharedPreferencesHelper share;
 	private LinearLayout search;
-	
-	private LinearLayout llCategory;							
+
+	private LinearLayout llCategory;
 	private CategoryQuickAction quickAction;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		mView = inflater.inflate(R.layout.fragment_main_index, container, false);
+		mView = inflater
+				.inflate(R.layout.fragment_main_index, container, false);
 
 		initData();
 		initView();
@@ -93,24 +95,29 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 		share = SharedPreferencesHelper.getInstance(getActivity());
 		// item中的各个控件
 		scan = (ImageView) mView.findViewById(R.id.iv_fragment_index_scan);
-		deliveryAddress = (TextView) mView.findViewById(R.id.tv_fragment_index_delivery_address);
-		View headerInListview = LayoutInflater.from(getActivity())
-				.inflate(R.layout.fragment_main_index_listview_header, null);
-		search = (LinearLayout) headerInListview.findViewById(R.id.ll_fragment_main_index_search);
-		deliveryAddress.setText(share.getStringValue(Configs.CURRENT_DELIVERY_ADDRESS, "暂未设置收货地址"));
+		deliveryAddress = (TextView) mView
+				.findViewById(R.id.tv_fragment_index_delivery_address);
+		View headerInListview = LayoutInflater.from(getActivity()).inflate(
+				R.layout.fragment_main_index_listview_header, null);
+		search = (LinearLayout) headerInListview
+				.findViewById(R.id.ll_fragment_main_index_search);
+		deliveryAddress.setText(share.getStringValue(
+				Configs.CURRENT_DELIVERY_ADDRESS, "暂未设置收货地址"));
 		scan.setOnClickListener(this);
 		deliveryAddress.setOnClickListener(this);
 		search.setOnClickListener(this);
-		
-		llCategory = (LinearLayout) mView.findViewById(R.id.ll_fragment_main_order_shops_first_item);
+
+		llCategory = (LinearLayout) mView
+				.findViewById(R.id.ll_fragment_main_order_shops_first_item);
 		llCategory.setOnClickListener(this);
-		
+
 		quickAction = new CategoryQuickAction(getActivity());
 		quickAction.setOnDismissListener(this);
 
-		mPullRefreshListView = (PullToRefreshListView) mView.findViewById(R.id.pull_refresh_list_fragment_index);
-		mPullRefreshListView.setMode(Mode.BOTH); 								// 设置你需要刷新的模式,BOTH是下拉和上拉都可以
-		mPullRefreshListView.setOnRefreshListener(this);						// 设置上拉下拉刷新监听
+		mPullRefreshListView = (PullToRefreshListView) mView
+				.findViewById(R.id.pull_refresh_list_fragment_index);
+		mPullRefreshListView.setMode(Mode.BOTH); // 设置你需要刷新的模式,BOTH是下拉和上拉都可以
+		mPullRefreshListView.setOnRefreshListener(this); // 设置上拉下拉刷新监听
 		ListView actualListView = mPullRefreshListView.getRefreshableView();
 
 		adapter = new PullDownPinnedHeaderAdapter<IndexFragmentShop>(
@@ -139,14 +146,14 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 						t.getText());
 			}
 		});
+		mGridView.setOnItemClickListener(this);
 
 	}
 
 	private void initData() {
 		// 商店数据
 		mListItems = new LinkedList<IndexFragmentShop>();
-		getDatas(Configs.APIShopsByPage
-				+ "pageNo=1&pageSize=5", INIT);
+		getDatas(Configs.APIShopsByPage + "pageNo=1&pageSize=5", INIT);
 
 		// 分类数据
 		classifyData = new ArrayList<CommonBean>();
@@ -174,7 +181,8 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		deliveryAddress.setText(share.getStringValue(Configs.CURRENT_DELIVERY_ADDRESS, "暂未设置收货地址"));
+		deliveryAddress.setText(share.getStringValue(
+				Configs.CURRENT_DELIVERY_ADDRESS, "暂未设置收货地址"));
 	}
 
 	/*
@@ -208,16 +216,26 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		if(position == 2){
+		Log.e("test for adapterview", parent.toString());
+		if (parent.getId() == R.id.gv_fragment_main_order_classify) {
 			mPullRefreshListView.getRefreshableView().setSelection(2);
-			quickAction.show(mView.findViewById(R.id.fragment_index_top_bar));
-		}
-		if (position != 2) {
-			Intent intent = new Intent(getActivity(), ShopActivity.class);
-			// 此时position需要减3才对的上mListItems中的数据,因为listview前面几个item用来充当头部了
-			intent.putExtra("shopId", mListItems.get(position - 3).getShopId());
-			intent.putExtra("shopName", mListItems.get(position - 3).getShopName());
-			startActivity(intent);
+			quickAction.show(mView
+					.findViewById(R.id.fragment_index_top_bar));
+		} else {
+			if (position == 2) {
+				mPullRefreshListView.getRefreshableView().setSelection(2);
+				quickAction.show(mView
+						.findViewById(R.id.fragment_index_top_bar));
+			}
+			if (position != 2) {
+				Intent intent = new Intent(getActivity(), ShopActivity.class);
+				// 此时position需要减3才对的上mListItems中的数据,因为listview前面几个item用来充当头部了
+				intent.putExtra("shopId", mListItems.get(position - 3)
+						.getShopId());
+				intent.putExtra("shopName", mListItems.get(position - 3)
+						.getShopName());
+				startActivity(intent);
+			}
 		}
 
 	}
@@ -250,25 +268,27 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 
 	@Override
 	public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
-		Toast.makeText(getActivity(), "Pull Down!",Toast.LENGTH_SHORT).show();
-		getDatas(Configs.APIShopsByPage + "pageNo=1&pageSize="+ PAGE_SIZE, PULL_DOWN);
+		Toast.makeText(getActivity(), "Pull Down!", Toast.LENGTH_SHORT).show();
+		getDatas(Configs.APIShopsByPage + "pageNo=1&pageSize=" + PAGE_SIZE,
+				PULL_DOWN);
 	}
 
 	@Override
 	public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-		Toast.makeText(getActivity(), "Pull Up!",Toast.LENGTH_SHORT).show();
-		getDatas(Configs.APIShopsByPage + "pageNo=" + PAGE+ "&pageSize=" + PAGE_SIZE, PULL_UP);
+		Toast.makeText(getActivity(), "Pull Up!", Toast.LENGTH_SHORT).show();
+		getDatas(Configs.APIShopsByPage + "pageNo=" + PAGE + "&pageSize="
+				+ PAGE_SIZE, PULL_UP);
 	}
-	
-	private void getDatas(String url, final int tag){
-		LoadingDialog.showDialog(getActivity());		//加载数据时显示对话框
+
+	private void getDatas(String url, final int tag) {
+		LoadingDialog.showDialog(getActivity()); // 加载数据时显示对话框
 		HttpUtil.get(url, new AsyncHttpResponseHandler() {
 
 			@Override
 			public void onFailure(int arg0, Header[] arg1, byte[] data,
 					Throwable throwable) {
 				Log.v(TAG, "throwable:  " + throwable.toString());
-				
+
 			}
 
 			@Override
@@ -284,10 +304,12 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 						fragmentShop = new IndexFragmentShop(
 								Configs.APITestForImg, "程序猿烧饼店", 123456,
 								"18:00", "免配送费", i, 0, "none");
-						fragmentShop.setShopId(array.getJSONObject(i).getInt("shopId"));
+						fragmentShop.setShopId(array.getJSONObject(i).getInt(
+								"shopId"));
 						fragmentShop.setShopName(array.getJSONObject(i)
 								.getString("shopName"));
-						fragmentShop.setShopImg(array.getJSONObject(i).getString("imgPath"));
+						fragmentShop.setShopImg(array.getJSONObject(i)
+								.getString("imgPath"));
 						mListItems.add(fragmentShop);
 					}
 					adapter.notifyDataSetChanged();
@@ -300,7 +322,7 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 					e.printStackTrace();
 				}
 			}
-			
+
 		});
 	}
 
@@ -308,5 +330,5 @@ public class IndexFragment extends Fragment implements OnScrollListener,
 	public void onDismiss() {
 		WindowUtil.setBackgroundAlpha(getActivity(), 1f);
 	}
-	
+
 }

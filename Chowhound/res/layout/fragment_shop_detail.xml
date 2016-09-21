@@ -6,6 +6,7 @@
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/scrollView1"
+        android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
@@ -236,8 +237,11 @@
                     android:id="@+id/tv_fragment_shop_detail_notice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:maxLines="2"
+                    android:singleLine="true"
                     android:text="加州汉堡欢迎您的光临，免费送餐，5楼以上步梯请自己下来接餐，如有不便请谅解"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:textSize="18sp" />
             </LinearLayout>
 
